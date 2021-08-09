@@ -91,7 +91,8 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2"
   },
-  "main": "index.js",
+  "main": "index",
+  "types": "index",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DaniloNovakovic/chrome-dynamic-bookmarks.git"
