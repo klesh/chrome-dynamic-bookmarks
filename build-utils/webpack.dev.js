@@ -4,7 +4,7 @@ const options = {
   mode: "development",
   devtool: "eval-source-map",
   output: {
-    publicPath: "/"
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -13,18 +13,18 @@ const options = {
         use: [
           {
             loader: "html-loader",
-            options: { minimize: false }
-          }
+            options: { minimize: false },
+          },
         ],
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   devServer: {
     contentBase: commonPaths.outputPath,
     compress: false,
-    hot: true
-  }
+    hot: true,
+  },
 };
 
 module.exports = options;

@@ -4,5 +4,5 @@ const ERR_NO_ENV_FLAG = chalk.red(
 );
 
 module.exports = {
-  ERR_NO_ENV_FLAG
+  ERR_NO_ENV_FLAG,
 };
