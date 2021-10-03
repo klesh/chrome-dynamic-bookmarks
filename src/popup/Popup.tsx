@@ -4,7 +4,7 @@ import AddBookmarkForm from "./AddBookmarkForm";
 import { CssBaseline, Box } from "@material-ui/core";
 import { TabPanel } from "shared/components/helpers";
 
-export default function Popup() {
+export default function Popup(): JSX.Element {
   const [value, setValue] = useState(0);
 
   function handleChange(_event, newValue) {

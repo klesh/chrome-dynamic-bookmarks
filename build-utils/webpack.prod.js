@@ -6,19 +6,19 @@ const options = {
   mode: "production",
   optimization: {
     splitChunks: {
-      chunks: "all"
+      chunks: "all",
     },
     minimizer: [
       new TerserPlugin({
         cache: true,
         parallel: true,
         sourceMap: true,
-        chunkFilter: chunk => {
+        chunkFilter: (chunk) => {
           return chunk.name !== "vendor";
-        }
+        },
       }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
   module: {
     rules: [
@@ -27,14 +27,14 @@ const options = {
         use: [
           {
             loader: "html-loader",
-            options: { minimize: true }
-          }
+            options: { minimize: true },
+          },
         ],
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
-  plugins: [new CleanWebpackPlugin()]
+  plugins: [new CleanWebpackPlugin()],
 };
 
 module.exports = options;

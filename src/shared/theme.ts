@@ -1,11 +1,12 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
 import merge from "lodash/merge";
+import type { CustomThemeOptions } from "./types/theme.types";
 
-const commonTheme = {
+const commonTheme: CustomThemeOptions = {
   iconSize: 16,
 };
 
-const lightTheme = {
+const lightTheme: CustomThemeOptions = {
   palette: {
     type: "light",
     primary: { main: "#3f51b5" },
@@ -15,7 +16,7 @@ const lightTheme = {
   treeViewIconColor: "#616161",
 };
 
-const darkTheme = {
+const darkTheme: CustomThemeOptions = {
   palette: {
     type: "dark",
     primary: { main: "#90CAF9" },
@@ -33,7 +34,7 @@ const darkTheme = {
  * Returns theme of the requested type.
  * @param {('dark'|'light')} type
  */
-export function getTheme(type = "dark") {
+export function getTheme(type = "dark"): CustomThemeOptions {
   switch (type) {
     case "dark":
       return merge(darkTheme, commonTheme);
@@ -42,4 +43,4 @@ export function getTheme(type = "dark") {
   }
 }
 
-export default createMuiTheme(getTheme());
+export default createTheme(getTheme());

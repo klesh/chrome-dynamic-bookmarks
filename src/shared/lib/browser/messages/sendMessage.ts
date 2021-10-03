@@ -1,27 +1,29 @@
 import getCurrentBrowser from "../getCurrentBrowser";
 import responseTypes from "shared/constants/responseTypes";
 import { logInfo } from "../log";
+import type { GenericObject, MessageResponse } from "shared/types";
 
 const browser = getCurrentBrowser();
 
-/**
- * @callback onResponseFunction
- * @param {{type: string, message: string, data?: any} response
- */
+type OnMessageResponseFn = (res: MessageResponse) => void;
 
 /**
  * Sends message via `browser.runtime.sendMessage` with `{type, data}` as it's arguments
- * @param {string} type - type of the message
- * @param {any} data - data that will be send in message
- * @param {onResponseFunction} onResponse - callback function that will be called on response
+ * @param type - type of the message
+ * @param data - data that will be send in message
+ * @param onResponse - callback function that will be called on response
  */
-export default function sendMessage(type, data, onResponse) {
+export default function sendMessage<T = GenericObject>(
+  type: string,
+  data: T,
+  onResponse: OnMessageResponseFn
+): void {
   const req = {
     type,
     data,
   };
 
-  function handleResponse(res = {}) {
+  const handleResponse = (res: Partial<MessageResponse> = {}) => {
     if (!res.type) {
       res.type = responseTypes.ERROR;
     }
@@ -36,8 +38,8 @@ export default function sendMessage(type, data, onResponse) {
     }
 
     logInfo("response", res);
-    onResponse(res);
-  }
+    onResponse(res as MessageResponse);
+  };
 
   browser.runtime.sendMessage(req, handleResponse);
 }
