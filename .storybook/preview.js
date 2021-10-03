@@ -1,6 +1,7 @@
 import { muiTheme } from "storybook-addon-material-ui";
+import { notification } from "./decorators";
 
-export const decorators = [muiTheme()];
+export const decorators = [muiTheme(), notification()].reverse();
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
