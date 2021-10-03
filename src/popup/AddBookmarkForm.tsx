@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { CircularProgress, Container } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { BookmarkForm } from "shared/components/bookmarks";
 import { sendMessage, getCurrentTab } from "shared/lib/browser";
 import { ADD_BM_NODE } from "shared/constants/requestTypes";
 import { generateRegExp } from "shared/lib/regexp";
-import { withSnackbar } from "notistack";
+import { useSnackbar, withSnackbar } from "notistack";
 
 const useStyles = makeStyles((theme) => ({
   progress: {
@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function AddBookmarkForm({ enqueueSnackbar }) {
+const AddBookmarkForm = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [initialValues, setInitialValues] = useState(null);
 
   useEffect(() => {
@@ -47,6 +48,6 @@ export function AddBookmarkForm({ enqueueSnackbar }) {
   ) : (
     <CircularProgress className={classes.progress} />
   );
-}
+};
 
 export default withSnackbar(AddBookmarkForm);

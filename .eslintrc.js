@@ -1,16 +1,14 @@
 module.exports = {
-  env: {
-    browser: true,
-    node: true,
-    commonjs: true,
-    es6: true,
-  },
-  extends: ["eslint:recommended", "plugin:jest/recommended", "prettier"],
-  globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
-  },
-  parser: "@babel/eslint-parser",
+  root: true,
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+  ],
+  plugins: ["@typescript-eslint", "jest", "react", "react-hooks", "jsx-a11y"],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
@@ -19,13 +17,35 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  plugins: ["react", "jest"],
+  env: {
+    browser: true,
+    node: true,
+    commonjs: true,
+    es6: true,
+  },
+  globals: {
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
+  },
   rules: {
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
-    "no-unused-vars": [
+    "react-hooks/exhaustive-deps": 1,
+    "@typescript-eslint/no-unused-vars": [
       "error",
       { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
     ],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/no-empty-function": "off",
   },
+  overrides: [
+    {
+      files: ["*.ts", "*.tsx"],
+      rules: {
+        "@typescript-eslint/explicit-module-boundary-types": ["error"],
+      },
+    },
+  ],
 };

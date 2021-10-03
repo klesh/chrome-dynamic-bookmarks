@@ -1,23 +1,28 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { AppBar, Tabs } from "@material-ui/core";
 import { LinkTab } from "shared/components/helpers";
+import type { GenericFunction } from "shared/types";
 
-function a11yProps(index) {
+function a11yProps(index: string | number) {
   return {
     id: `nav-tab-${index}`,
     "aria-controls": `nav-tabpanel-${index}`,
   };
 }
 
-export default function NavTabs(props) {
+interface Props {
+  value: number;
+  onChange: GenericFunction;
+}
+
+const NavTabs = ({ value, onChange }: Props): JSX.Element => {
   return (
     <AppBar position="static">
       <Tabs
         variant="scrollable"
         scrollButtons="on"
-        value={props.value}
-        onChange={props.onChange}
+        value={value}
+        onChange={onChange}
         aria-label="Navigation Tabs"
         indicatorColor="primary"
       >
@@ -32,9 +37,6 @@ export default function NavTabs(props) {
       </Tabs>
     </AppBar>
   );
-}
-
-NavTabs.propTypes = {
-  value: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
+
+export default NavTabs;
