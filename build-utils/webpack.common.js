@@ -22,7 +22,7 @@ const fileExtensions = [
 const options = {
   entry: {
     vendor: ["react", "react-dom"],
-    popup: path.join(commonPaths.srcPath, "popup", "index.js"),
+    popup: path.join(commonPaths.srcPath, "popup", "index.tsx"),
     options: path.join(commonPaths.srcPath, "options", "index.js"),
     background: path.join(commonPaths.srcPath, "background", "index.js"),
     bookmarkManager: path.join(
