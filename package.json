@@ -17,7 +17,9 @@
     "format:js": "eslint --cache --fix --ext .jsx,.js,.ts,.tsx ./src",
     "format:stylelint": "stylelint \"**/*.{css}\" --allow-empty-input",
     "format:prettier": "pretty-quick --staged",
-    "format:prettier:all": "prettier --write \"./src/**/*.{js,jsx,ts,tsx}\" --ignore-unknown"
+    "format:prettier:all": "prettier --write \"./src/**/*.{js,jsx,ts,tsx}\" --ignore-unknown",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@material-ui/core": "^4.10.2",
@@ -48,6 +50,10 @@
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.6.3",
     "@babel/preset-typescript": "^7.15.0",
+    "@storybook/addon-actions": "^6.3.9",
+    "@storybook/addon-essentials": "^6.3.9",
+    "@storybook/addon-links": "^6.3.9",
+    "@storybook/react": "^6.3.9",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.4.13",
     "@types/react": "^17.0.16",
