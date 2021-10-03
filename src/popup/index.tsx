@@ -2,7 +2,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import React from "react";
 import { render } from "react-dom";
-import Popup from "./Popup";
+import Popup from "./components/Popup";
 import { SnackbarProvider } from "notistack";
 import { ThemeProvider } from "@material-ui/styles";
 import { SnackbarCloseButton } from "shared/components/helpers";
