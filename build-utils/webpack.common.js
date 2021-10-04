@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 const commonPaths = require("./common-paths");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 const fileExtensions = [
   "jpg",
@@ -36,8 +37,14 @@ const options = {
     filename: "[name].bundle.js",
   },
   resolve: {
-    modules: ["node_modules", commonPaths.srcPath],
+    modules: [commonPaths.srcPath, "node_modules"],
     extensions: [".tsx", ".ts", ".js"],
+    plugins: [
+      new TsconfigPathsPlugin({
+        extensions: [".tsx", ".ts", ".js"],
+        configFile: path.resolve(commonPaths.projectRoot, "tsconfig.json"),
+      }),
+    ],
   },
   optimization: {
     splitChunks: {
