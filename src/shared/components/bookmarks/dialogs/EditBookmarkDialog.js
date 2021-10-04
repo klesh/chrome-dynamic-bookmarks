@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import { BookmarkForm } from "../form";
-import { makeUniqueNodeByIdSelector, editBookmarkNode } from "shared/store";
+import { makeUniqueNodeByIdSelector, editBookmarkNode } from "@/shared/store";
 
 export function EditBookmarkDialog(props) {
   const { onClose, open, node = {}, onSubmit } = props;

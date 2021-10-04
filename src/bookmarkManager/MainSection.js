@@ -6,8 +6,8 @@ import {
   BookmarkBreadcrumbs,
   ActionMenuContext,
   getAnchorPosition,
-} from "shared/components/bookmarks";
-import { actionMenuIds } from "shared/constants";
+} from "@/shared/components/bookmarks";
+import { actionMenuIds } from "@/shared/constants";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,

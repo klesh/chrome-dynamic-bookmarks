@@ -1,5 +1,5 @@
 import connectToBackground from "./connectToBackground";
-import { getBookmarkNodes } from "shared/store/actions";
+import { getBookmarkNodes } from "@/shared/store/actions";
 import getEventReducer from "./getEventReducer";
 import createEventQueueHandler from "./createEventQueueHandler";
 import createDebouncedHandler from "./createDebouncedHandler";

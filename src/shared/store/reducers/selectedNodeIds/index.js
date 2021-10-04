@@ -1,7 +1,7 @@
 import createReducer from "../helpers/createReducer";
 import ActionHandlerFactory from "../helpers/actionHandlerFactory";
-import actionTypes from "shared/constants/actionTypes";
-import { indexOfOrDefault, sliceRange } from "shared/lib/array";
+import actionTypes from "@/shared/constants/actionTypes";
+import { indexOfOrDefault, sliceRange } from "@/shared/lib/array";
 
 const initialState = { data: [], pivot: null };
 

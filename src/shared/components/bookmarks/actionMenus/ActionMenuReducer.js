@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import ActionMenuContext from "./ActionMenuContext";
-import { actionMenuIds } from "shared/constants";
+import { actionMenuIds } from "@/shared/constants";
 import FileActionMenu from "./FileActionMenu";
 import FolderActionMenu from "./FolderActionMenu";
 import AddBookmarkNodeActionMenu from "./AddBookmarkNodeActionMenu";

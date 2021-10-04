@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import { TextField } from "formik-material-ui";
 import BookmarkSchema from "./BookmarkSchema";
-import { SubmitButton } from "shared/components/helpers";
+import { SubmitButton } from "@/shared/components/helpers";
 
 export default function BookmarkForm(props) {
   const { initialValues, handleSubmit } = props;

@@ -8,14 +8,14 @@ import {
   pasteToBookmarkNode,
   clipboardSelector,
   makeUniqueNodeByIdSelector,
-} from "shared/store";
-import { DialogContext } from "shared/components/bookmarks";
-import { dialogIds } from "shared/constants";
+} from "@/shared/store";
+import { DialogContext } from "@/shared/components/bookmarks";
+import { dialogIds } from "@/shared/constants";
 import {
   openNewTab,
   openNewWindow,
   openNewIncognitoWindow,
-} from "shared/lib/browser";
+} from "@/shared/lib/browser";
 
 export function FileActionMenu(props) {
   const { openDialog } = React.useContext(DialogContext);

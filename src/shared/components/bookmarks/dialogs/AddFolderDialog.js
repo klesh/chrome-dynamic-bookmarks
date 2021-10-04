@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import { FolderForm } from "../form";
-import { filterSelector, addBookmarkNode } from "shared/store";
+import { filterSelector, addBookmarkNode } from "@/shared/store";
 
 function AddFolderDialog(props) {
   const { onClose, open, parentId, onSubmit } = props;

@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { IconButton, Toolbar, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import { SearchInput } from "shared/components/helpers";
+import { SearchInput } from "@/shared/components/helpers";
 import MainNavMenu from "./MainNavMenu";
 
 const useStyles = makeStyles((theme) => ({

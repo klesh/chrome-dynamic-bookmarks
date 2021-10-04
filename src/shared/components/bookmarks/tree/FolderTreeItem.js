@@ -5,15 +5,15 @@ import FolderIcon from "@material-ui/icons/Folder";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import { openFolder, moveBookmarkNode } from "shared/store/actions";
+import { openFolder, moveBookmarkNode } from "@/shared/store/actions";
 import {
   breadcrumbIdsSelector,
   filterSelector,
   trackedByIdSelector,
-} from "shared/store/selectors/index";
+} from "@/shared/store/selectors/index";
 import TreeItem from "./TreeItem";
 import { ActionMenuContext, getAnchorPosition } from "../actionMenus";
-import { actionMenuIds } from "shared/constants";
+import { actionMenuIds } from "@/shared/constants";
 
 export function FolderTreeItem({
   node,

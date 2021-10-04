@@ -12,8 +12,8 @@ import {
   setSelected,
   filterSelector,
   clipboardSelector,
-} from "shared/store";
-import { isFolder } from "shared/lib/bookmarkNodes";
+} from "@/shared/store";
+import { isFolder } from "@/shared/lib/bookmarkNodes";
 
 const keyMap = {
   COPY: "ctrl+c",

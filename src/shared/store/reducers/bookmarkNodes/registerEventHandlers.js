@@ -1,4 +1,4 @@
-import events from "shared/constants/events";
+import events from "@/shared/constants/events";
 import { onNodeCreated } from "./handlers/onNodeCreated";
 import { onNodeChanged } from "./handlers/onNodeChanged";
 import { onNodeRemoved } from "./handlers/onNodeRemoved";

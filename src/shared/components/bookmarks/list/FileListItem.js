@@ -9,8 +9,8 @@ import {
 } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import BookmarkIcon from "../BookmarkIcon";
-import { actionMenuIds } from "shared/constants";
-import { openNewTab } from "shared/lib/browser";
+import { actionMenuIds } from "@/shared/constants";
+import { openNewTab } from "@/shared/lib/browser";
 
 function _emptyFunc() {}
 

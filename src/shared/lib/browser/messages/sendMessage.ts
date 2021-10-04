@@ -1,7 +1,7 @@
 import getCurrentBrowser from "../getCurrentBrowser";
-import responseTypes from "shared/constants/responseTypes";
+import responseTypes from "@/shared/constants/responseTypes";
 import { logInfo } from "../log";
-import type { GenericObject, MessageResponse } from "shared/types";
+import type { GenericObject, MessageResponse } from "@/shared/types";
 
 const browser = getCurrentBrowser();
 

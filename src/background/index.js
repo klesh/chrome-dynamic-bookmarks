@@ -6,7 +6,7 @@ import addInstalledListeners from "./addInstalledListeners";
 import addMessageListeners from "./addMessageListeners";
 import addTabsListeners from "./addTabsListeners";
 import createObservable from "./createObservable";
-import { logInfo } from "shared/lib/browser";
+import { logInfo } from "@/shared/lib/browser";
 
 const observable = createObservable();
 observable.subscribe("logger", (event) => logInfo(event));

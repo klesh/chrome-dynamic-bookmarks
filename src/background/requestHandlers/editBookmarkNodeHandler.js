@@ -1,5 +1,5 @@
-import responseTypes from "shared/constants/responseTypes";
-import { editBookmarkNode } from "shared/lib/browser";
+import responseTypes from "@/shared/constants/responseTypes";
+import { editBookmarkNode } from "@/shared/lib/browser";
 
 export default function editBookmarkNodeHandler({ data }, sendResponse) {
   editBookmarkNode(data, (errMsg, updatedNode) => {

@@ -5,8 +5,8 @@ import { render } from "react-dom";
 import Popup from "./components/Popup";
 import { SnackbarProvider } from "notistack";
 import { ThemeProvider } from "@material-ui/styles";
-import { SnackbarCloseButton } from "shared/components/helpers";
-import theme from "shared/theme";
+import { SnackbarCloseButton } from "@/shared/components/helpers";
+import theme from "@/shared/theme";
 
 const App = () => {
   return (

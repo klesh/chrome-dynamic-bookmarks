@@ -5,9 +5,9 @@ import {
   applyFilter,
   clearSelected,
   removeBookmarkNode,
-} from "shared/store/actions";
+} from "@/shared/store/actions";
 import MainNavToolbar from "./MainNavToolbar";
-import { selectedNodeIdsSelector, filterSelector } from "shared/store";
+import { selectedNodeIdsSelector, filterSelector } from "@/shared/store";
 import MainNavToolbarSelected from "./MainNavToolbarSelected";
 import { IgnoreKeys } from "react-hotkeys";
 

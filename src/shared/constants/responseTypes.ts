@@ -1,4 +1,4 @@
-import type { MessageResponseType } from "shared/types";
+import type { MessageResponseType } from "@/shared/types";
 
 export const SUCCESS = "success";
 export const ERROR = "error";

@@ -1,6 +1,6 @@
 import * as dbm25x from "../_dbm-2.5.x";
 import dbm260 from "../_dbm-2.6.0";
-import { logError, logInfo } from "shared/lib/browser/log";
+import { logError, logInfo } from "@/shared/lib/browser/log";
 
 function _isMigrated(dynBook) {
   return Object.keys(dynBook).length == 0;

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import { TextField } from "formik-material-ui";
-import { SubmitButton } from "shared/components/helpers";
+import { SubmitButton } from "@/shared/components/helpers";
 import * as Yup from "yup";
 
 const FolderSchema = Yup.object().shape({

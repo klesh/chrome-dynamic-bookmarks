@@ -5,9 +5,9 @@ import {
   getFilteredNodes,
   getBreadcrumbIds,
   isFile,
-} from "shared/lib/bookmarkNodes";
-import { mapArrayToObject } from "shared/lib/objects";
-import getTrackedByIdNodes from "shared/lib/bookmarkNodes/getTrackedByIdNodes";
+} from "@/shared/lib/bookmarkNodes";
+import { mapArrayToObject } from "@/shared/lib/objects";
+import getTrackedByIdNodes from "@/shared/lib/bookmarkNodes/getTrackedByIdNodes";
 
 export const clipboardSelector = (state) => state.clipboard;
 

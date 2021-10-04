@@ -1,5 +1,5 @@
 import { Migrator260 } from "./_migration-2.6.0";
-import { logError, logInfo } from "shared/lib/browser/log";
+import { logError, logInfo } from "@/shared/lib/browser/log";
 
 /**
  * Used to migrate data to new storage when updating application

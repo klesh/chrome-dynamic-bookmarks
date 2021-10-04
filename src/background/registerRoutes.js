@@ -1,4 +1,4 @@
-import requestTypes from "shared/constants/requestTypes";
+import requestTypes from "@/shared/constants/requestTypes";
 import {
   addBookmarkNodeHandler,
   removeBookmarkNodeHandler,

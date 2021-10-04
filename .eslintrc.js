@@ -7,7 +7,14 @@ module.exports = {
     "plugin:jsx-a11y/recommended",
     "prettier",
   ],
-  plugins: ["@typescript-eslint", "jest", "react", "react-hooks", "jsx-a11y"],
+  plugins: [
+    "@typescript-eslint",
+    "jest",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "simple-import-sort",
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
@@ -39,6 +46,8 @@ module.exports = {
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/triple-slash-reference": "off",
     "@typescript-eslint/no-empty-function": "off",
+    "simple-import-sort/imports": "warn",
+    "simple-import-sort/exports": "warn",
   },
   overrides: [
     {

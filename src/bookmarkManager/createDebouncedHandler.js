@@ -1,4 +1,4 @@
-import Queue from "shared/lib/Queue";
+import Queue from "@/shared/lib/Queue";
 
 /**
  * Creates debounced event handler that receives `event` which is moved into `eventQueue`. After each new received event `delayInMilliseconds` timer is reset.

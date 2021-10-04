@@ -1,4 +1,4 @@
-import responseTypes from "shared/constants/responseTypes";
+import responseTypes from "@/shared/constants/responseTypes";
 
 function log(response) {
   console.warn("response", response);

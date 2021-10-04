@@ -4,11 +4,11 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { SnackbarProvider } from "notistack";
-import SnackbarCloseButton from "shared/components/helpers/SnackbarCloseButton";
+import SnackbarCloseButton from "@/shared/components/helpers/SnackbarCloseButton";
 import Manager from "./Manager";
 import { ThemeProvider } from "@material-ui/styles";
-import theme from "shared/theme";
-import { getStore } from "shared/store";
+import theme from "@/shared/theme";
+import { getStore } from "@/shared/store";
 import attachStoreToListeners from "./attachStoreToListeners";
 
 const store = getStore();

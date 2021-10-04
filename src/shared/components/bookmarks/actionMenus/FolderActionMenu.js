@@ -8,9 +8,9 @@ import {
   pasteToBookmarkNode,
   clipboardSelector,
   bookmarksByParentIdSelector,
-} from "shared/store";
-import { DialogContext } from "shared/components/bookmarks";
-import { dialogIds } from "shared/constants";
+} from "@/shared/store";
+import { DialogContext } from "@/shared/components/bookmarks";
+import { dialogIds } from "@/shared/constants";
 import { createSelector } from "reselect";
 import OpenLinksActionMenuItems from "./OpenLinksActionMenuItems";
 

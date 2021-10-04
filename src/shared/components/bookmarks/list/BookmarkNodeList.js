@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { List } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
-import { filteredNodeIdsSelector } from "shared/store/selectors/index";
+import { filteredNodeIdsSelector } from "@/shared/store/selectors/index";
 import { ActionMenuContext } from "../actionMenus";
 import NodeListItem from "./NodeListItem";
 

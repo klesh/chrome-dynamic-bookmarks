@@ -1,8 +1,8 @@
 import React from "react";
 import { IconButton, Menu, MenuItem } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { DialogContext } from "shared/components/bookmarks";
-import { dialogIds } from "shared/constants";
+import { DialogContext } from "@/shared/components/bookmarks";
+import { dialogIds } from "@/shared/constants";
 
 export default function MainNavMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);

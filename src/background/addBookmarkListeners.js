@@ -1,5 +1,5 @@
-import { getCurrentBrowser, logWarn, dbm } from "shared/lib/browser";
-import events, { BM_NODE_CHANGED } from "shared/constants/events";
+import { getCurrentBrowser, logWarn, dbm } from "@/shared/lib/browser";
+import events, { BM_NODE_CHANGED } from "@/shared/constants/events";
 
 const browser = getCurrentBrowser();
 

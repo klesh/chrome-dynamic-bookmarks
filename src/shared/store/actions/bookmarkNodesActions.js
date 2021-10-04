@@ -1,12 +1,12 @@
-import { getBookmarkNodes as _getBookmarkNodes } from "shared/lib/browser/dynBookmarksFacade";
-import { sendMessage } from "shared/lib/browser";
+import { getBookmarkNodes as _getBookmarkNodes } from "@/shared/lib/browser/dynBookmarksFacade";
+import { sendMessage } from "@/shared/lib/browser";
 import {
   requestTypes,
   responseTypes,
   actionTypes,
   clipboardTypes,
   eventTypes,
-} from "shared/constants";
+} from "@/shared/constants";
 
 export function getBookmarkNodes() {
   return (dispatch) => {

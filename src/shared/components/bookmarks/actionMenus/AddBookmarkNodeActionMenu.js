@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { Menu, MenuItem } from "@material-ui/core";
-import { DialogContext } from "shared/components/bookmarks";
-import { dialogIds, actionMenuIds } from "shared/constants";
+import { DialogContext } from "@/shared/components/bookmarks";
+import { dialogIds, actionMenuIds } from "@/shared/constants";
 
 export default function AddBookmarkNodeActionMenu(props) {
   const { open, onClose, menuProps = {} } = props;

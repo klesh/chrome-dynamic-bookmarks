@@ -1,4 +1,4 @@
-import { isFolder } from "shared/lib/bookmarkNodes";
+import { isFolder } from "@/shared/lib/bookmarkNodes";
 import { onNodeChanged } from "./onNodeChanged";
 import { getNode } from "./getNode";
 

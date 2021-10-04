@@ -1,4 +1,4 @@
-import { getCurrentBrowser, logWarn, logInfo, dbm } from "shared/lib/browser";
+import { getCurrentBrowser, logWarn, logInfo, dbm } from "@/shared/lib/browser";
 
 const browser = getCurrentBrowser();
 

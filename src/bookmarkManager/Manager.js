@@ -7,9 +7,9 @@ import MainNav from "./MainNav";
 import {
   DialogProvider,
   ActionMenuProvider,
-} from "shared/components/bookmarks";
-import { StatusSnackbar } from "shared/components/helpers";
-import SelectedNodesKeyHandler from "shared/components/bookmarks/SelectedNodesKeyHandler";
+} from "@/shared/components/bookmarks";
+import { StatusSnackbar } from "@/shared/components/helpers";
+import SelectedNodesKeyHandler from "@/shared/components/bookmarks/SelectedNodesKeyHandler";
 
 const useStyles = makeStyles((theme) => ({
   root: {

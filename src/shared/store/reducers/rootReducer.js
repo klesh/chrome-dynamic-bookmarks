@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import actionTypes from "shared/constants/actionTypes";
+import actionTypes from "@/shared/constants/actionTypes";
 import alert from "./alert";
 import bookmarkNodes from "./bookmarkNodes";
 import clipboard from "./clipboard";

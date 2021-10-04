@@ -1,5 +1,5 @@
-import responseTypes from "shared/constants/responseTypes";
-import { createBookmarkNode } from "shared/lib/browser";
+import responseTypes from "@/shared/constants/responseTypes";
+import { createBookmarkNode } from "@/shared/lib/browser";
 
 export default function addBookmarkNodeHandler({ data }, sendResponse) {
   createBookmarkNode(data, (errMsg, createdNode) => {

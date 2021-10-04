@@ -1,7 +1,7 @@
 import React from "react";
 import DialogContext from "./DialogContext";
 import AddFolderDialog from "./AddFolderDialog";
-import { dialogIds } from "shared/constants";
+import { dialogIds } from "@/shared/constants";
 import AddBookmarkDialog from "./AddBookmarkDialog";
 import EditBookmarkDialog from "./EditBookmarkDialog";
 import EditFolderDialog from "./EditFolderDialog";

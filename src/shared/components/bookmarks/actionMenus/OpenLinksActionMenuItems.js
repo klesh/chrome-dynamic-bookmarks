@@ -5,7 +5,7 @@ import {
   openNewTab,
   openNewWindow,
   openNewIncognitoWindow,
-} from "shared/lib/browser";
+} from "@/shared/lib/browser";
 
 const useStyles = makeStyles(() => {
   return {

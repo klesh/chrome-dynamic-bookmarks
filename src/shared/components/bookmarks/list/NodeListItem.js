@@ -2,21 +2,21 @@ import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import FolderListItem from "./FolderListItem";
 import FileListItem from "./FileListItem";
-import { isFolder } from "shared/lib/bookmarkNodes";
+import { isFolder } from "@/shared/lib/bookmarkNodes";
 import {
   selectedByNodeIdSelector,
   selectedNodeIdsSelector,
   makeUniqueNodeByIdSelector,
   filteredNodeIdsSelector,
-} from "shared/store/selectors/index";
-import { setDragTextData } from "shared/lib/dragAndDrop";
+} from "@/shared/store/selectors/index";
+import { setDragTextData } from "@/shared/lib/dragAndDrop";
 import { getAnchorElement, getAnchorPosition } from "../actionMenus";
 import {
   toggleSelected,
   setSelectedPivot,
   selectRangeByPivot,
-} from "shared/store/actions";
-import { actionMenuIds } from "shared/constants";
+} from "@/shared/store/actions";
+import { actionMenuIds } from "@/shared/constants";
 
 function NodeListItem(props) {
   const {

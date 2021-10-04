@@ -10,13 +10,13 @@ import {
   Typography,
 } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { actionMenuIds } from "shared/constants";
-import { allowDrop } from "shared/lib/dragAndDrop";
+import { actionMenuIds } from "@/shared/constants";
+import { allowDrop } from "@/shared/lib/dragAndDrop";
 import {
   trackedByIdSelector,
   openFolder,
   moveBookmarkNode,
-} from "shared/store";
+} from "@/shared/store";
 
 function _emptyFunc() {}
 
