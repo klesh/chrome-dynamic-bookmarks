@@ -1,5 +1,6 @@
 import { muiTheme } from "storybook-addon-material-ui";
 import { notification } from "./decorators";
+import "./mocks/browser";
 
 export const decorators = [muiTheme(), notification()].reverse();
 
