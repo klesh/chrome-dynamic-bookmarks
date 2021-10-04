@@ -1,4 +1,5 @@
 import React from "react";
+
 import DefaultIcon from "@/shared/assets/images/default_favicon.png";
 import { getFaviconSrc } from "@/shared/lib/favicon";
 

@@ -1,21 +1,22 @@
-import React, { useCallback } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import {
+  Icon,
+  IconButton,
   ListItem,
   ListItemIcon,
   ListItemSecondaryAction,
-  Icon,
-  IconButton,
   Typography,
 } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import PropTypes from "prop-types";
+import React, { useCallback } from "react";
+import { connect } from "react-redux";
+
 import { actionMenuIds } from "@/shared/constants";
 import { allowDrop } from "@/shared/lib/dragAndDrop";
 import {
-  trackedByIdSelector,
-  openFolder,
   moveBookmarkNode,
+  openFolder,
+  trackedByIdSelector,
 } from "@/shared/store";
 
 function _emptyFunc() {}

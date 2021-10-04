@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
 import { withSnackbar } from "notistack";
+import PropTypes from "prop-types";
+import React from "react";
+import { useSelector } from "react-redux";
 
 export function StatusSnackbar({ enqueueSnackbar }) {
   const alert = useSelector((state) => state.alert);

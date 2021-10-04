@@ -1,5 +1,6 @@
-import React from "react";
 import { AppBar, Tabs } from "@material-ui/core";
+import React from "react";
+
 import { LinkTab } from "@/shared/components/helpers";
 import type { GenericFunction } from "@/shared/types";
 

@@ -1,5 +1,5 @@
-import createReducer from "../helpers/createReducer";
 import ActionHandlerFactory from "../helpers/actionHandlerFactory";
+import createReducer from "../helpers/createReducer";
 import registerActionHandlers from "./registerActionHandlers";
 import registerEventHandlers from "./registerEventHandlers";
 

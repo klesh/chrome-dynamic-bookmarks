@@ -1,8 +1,9 @@
 import events from "@/shared/constants/events";
-import { onNodeCreated } from "./handlers/onNodeCreated";
+
 import { onNodeChanged } from "./handlers/onNodeChanged";
-import { onNodeRemoved } from "./handlers/onNodeRemoved";
+import { onNodeCreated } from "./handlers/onNodeCreated";
 import { onNodeMoved } from "./handlers/onNodeMoved";
+import { onNodeRemoved } from "./handlers/onNodeRemoved";
 
 export default function registerEventHandlers(factory) {
   factory.register(events.BM_NODE_MOVED, onNodeMoved);

@@ -1,15 +1,17 @@
-import React from "react";
-import { CssBaseline, Box } from "@material-ui/core";
+import { Box,CssBaseline } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/styles";
+import React from "react";
+
+import {
+  ActionMenuProvider,
+  DialogProvider,
+} from "@/shared/components/bookmarks";
+import SelectedNodesKeyHandler from "@/shared/components/bookmarks/SelectedNodesKeyHandler";
+import { StatusSnackbar } from "@/shared/components/helpers";
+
+import MainNav from "./MainNav";
 import MainSection from "./MainSection";
 import SideNav from "./SideNav";
-import MainNav from "./MainNav";
-import {
-  DialogProvider,
-  ActionMenuProvider,
-} from "@/shared/components/bookmarks";
-import { StatusSnackbar } from "@/shared/components/helpers";
-import SelectedNodesKeyHandler from "@/shared/components/bookmarks/SelectedNodesKeyHandler";
 
 const useStyles = makeStyles((theme) => ({
   root: {

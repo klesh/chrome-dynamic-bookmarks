@@ -1,15 +1,18 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+
+import { ThemeProvider } from "@material-ui/styles";
+import { SnackbarProvider } from "notistack";
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
-import { SnackbarProvider } from "notistack";
+
 import SnackbarCloseButton from "@/shared/components/helpers/SnackbarCloseButton";
-import Manager from "./Manager";
-import { ThemeProvider } from "@material-ui/styles";
-import theme from "@/shared/theme";
 import { getStore } from "@/shared/store";
+import theme from "@/shared/theme";
+
 import attachStoreToListeners from "./attachStoreToListeners";
+import Manager from "./Manager";
 
 const store = getStore();
 

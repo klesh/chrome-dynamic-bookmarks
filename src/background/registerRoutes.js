@@ -1,10 +1,11 @@
 import requestTypes from "@/shared/constants/requestTypes";
+
 import {
   addBookmarkNodeHandler,
-  removeBookmarkNodeHandler,
-  editBookmarkNodeHandler,
   copyBookmarkNodeHandler,
+  editBookmarkNodeHandler,
   moveBookmarkNodeHandler,
+  removeBookmarkNodeHandler,
 } from "./requestHandlers";
 
 export default function registerRoutes(router) {

@@ -1,16 +1,18 @@
-import React, { useCallback } from "react";
-import PropTypes from "prop-types";
 import {
+  IconButton,
   ListItem,
   ListItemIcon,
   ListItemSecondaryAction,
-  IconButton,
   Typography,
 } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import BookmarkIcon from "../BookmarkIcon";
+import PropTypes from "prop-types";
+import React, { useCallback } from "react";
+
 import { actionMenuIds } from "@/shared/constants";
 import { openNewTab } from "@/shared/lib/browser";
+
+import BookmarkIcon from "../BookmarkIcon";
 
 function _emptyFunc() {}
 

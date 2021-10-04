@@ -1,21 +1,22 @@
+import { Divider,Menu, MenuItem } from "@material-ui/core";
 import React from "react";
 import { connect } from "react-redux";
-import { Menu, MenuItem, Divider } from "@material-ui/core";
-import {
-  removeBookmarkNode,
-  copyToClipboard,
-  cutToClipboard,
-  pasteToBookmarkNode,
-  clipboardSelector,
-  makeUniqueNodeByIdSelector,
-} from "@/shared/store";
+
 import { DialogContext } from "@/shared/components/bookmarks";
 import { dialogIds } from "@/shared/constants";
 import {
+  openNewIncognitoWindow,
   openNewTab,
   openNewWindow,
-  openNewIncognitoWindow,
 } from "@/shared/lib/browser";
+import {
+  clipboardSelector,
+  copyToClipboard,
+  cutToClipboard,
+  makeUniqueNodeByIdSelector,
+  pasteToBookmarkNode,
+  removeBookmarkNode,
+} from "@/shared/store";
 
 export function FileActionMenu(props) {
   const { openDialog } = React.useContext(DialogContext);

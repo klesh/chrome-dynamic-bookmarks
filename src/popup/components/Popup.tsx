@@ -1,9 +1,11 @@
+import { Box,CssBaseline } from "@material-ui/core";
 import React, { useState } from "react";
-import NavTabs from "./NavTabs";
-import AddBookmarkForm from "./AddBookmarkForm";
-import { CssBaseline, Box } from "@material-ui/core";
+
 import { TabPanel } from "@/shared/components/helpers";
 import { GenericFunction } from "@/shared/types";
+
+import AddBookmarkForm from "./AddBookmarkForm";
+import NavTabs from "./NavTabs";
 
 export const Popup: React.VFC = () => {
   const [value, setValue] = useState(0);

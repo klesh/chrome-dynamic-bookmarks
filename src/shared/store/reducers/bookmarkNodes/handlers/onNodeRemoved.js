@@ -1,4 +1,5 @@
 import { removeProp } from "@/shared/lib/objects";
+
 import { getNode } from "./getNode";
 
 export function onNodeRemoved(state, { data = {} }) {

@@ -1,8 +1,9 @@
-import { bm as bookmarks } from "./bookmarks";
-import { dbm as storage } from "./storage";
-import normalizeBookmarkTree from "./normalizeBookmarkTree";
 import { combineProps } from "@/shared/lib/objects";
+
 import { isFolder } from "../bookmarkNodes";
+import { bm as bookmarks } from "./bookmarks";
+import normalizeBookmarkTree from "./normalizeBookmarkTree";
+import { dbm as storage } from "./storage";
 
 function copyBookmarkAsync(node) {
   return bookmarks.createAsync(node);

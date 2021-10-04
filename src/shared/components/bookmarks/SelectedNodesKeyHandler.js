@@ -1,19 +1,20 @@
 import React, { useCallback } from "react";
-import { connect } from "react-redux";
 import { GlobalHotKeys } from "react-hotkeys";
+import { connect } from "react-redux";
+
+import { isFolder } from "@/shared/lib/bookmarkNodes";
 import {
-  selectedNodeIdsSelector,
-  filteredNodesSelector,
+  clearSelected,
+  clipboardSelector,
   copyToClipboard,
   cutToClipboard,
-  removeBookmarkNode,
-  pasteToBookmarkNode,
-  clearSelected,
-  setSelected,
+  filteredNodesSelector,
   filterSelector,
-  clipboardSelector,
+  pasteToBookmarkNode,
+  removeBookmarkNode,
+  selectedNodeIdsSelector,
+  setSelected,
 } from "@/shared/store";
-import { isFolder } from "@/shared/lib/bookmarkNodes";
 
 const keyMap = {
   COPY: "ctrl+c",

@@ -1,4 +1,5 @@
 import { getCurrentBrowser } from "@/shared/lib/browser";
+
 import createRouter from "./createRouter";
 import registerRoutes from "./registerRoutes";
 

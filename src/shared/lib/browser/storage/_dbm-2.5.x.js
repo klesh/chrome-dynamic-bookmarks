@@ -1,4 +1,5 @@
 import { logError } from "@/shared/lib/browser/log";
+
 import getCurrentBrowser from "../getCurrentBrowser";
 
 const browser = getCurrentBrowser();

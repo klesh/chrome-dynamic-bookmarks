@@ -1,6 +1,7 @@
 import { isFolder } from "@/shared/lib/bookmarkNodes";
-import { onNodeChanged } from "./onNodeChanged";
+
 import { getNode } from "./getNode";
+import { onNodeChanged } from "./onNodeChanged";
 
 export function onNodeCreated(state, { data = {} }) {
   const nodeId = data.id;

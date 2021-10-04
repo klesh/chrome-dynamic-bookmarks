@@ -1,14 +1,16 @@
+import { Divider,Menu, MenuItem } from "@material-ui/core";
 import React from "react";
 import { connect } from "react-redux";
-import { Menu, MenuItem, Divider } from "@material-ui/core";
+
 import { actionMenuIds } from "@/shared/constants";
 import {
-  selectedNodeIdsSelector,
-  selectedBookmarksUrlSelector,
-  removeBookmarkNode,
   copyToClipboard,
   cutToClipboard,
+  removeBookmarkNode,
+  selectedBookmarksUrlSelector,
+  selectedNodeIdsSelector,
 } from "@/shared/store";
+
 import OpenLinksActionMenuItems from "./OpenLinksActionMenuItems";
 
 export function SelectedNodesActionMenu(props) {

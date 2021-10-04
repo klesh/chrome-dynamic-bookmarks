@@ -1,9 +1,11 @@
+import { Dialog, DialogContent,DialogTitle } from "@material-ui/core";
+import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { Dialog, DialogTitle, DialogContent } from "@material-ui/core";
+
+import { addBookmarkNode,filterSelector } from "@/shared/store";
+
 import { BookmarkForm } from "../form";
-import { filterSelector, addBookmarkNode } from "@/shared/store";
 
 function AddBookmarkDialog(props) {
   const { onClose, open, parentId, onSubmit } = props;

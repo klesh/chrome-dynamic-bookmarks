@@ -1,5 +1,6 @@
-import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
+
 import { BookmarkTreeView } from "@/shared/components/bookmarks";
 
 const useStyles = makeStyles((theme) => ({

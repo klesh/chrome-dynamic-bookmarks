@@ -1,6 +1,7 @@
-import createReducer from "../helpers/createReducer";
-import ActionHandlerFactory from "../helpers/actionHandlerFactory";
 import actionTypes from "@/shared/constants/actionTypes";
+
+import ActionHandlerFactory from "../helpers/actionHandlerFactory";
+import createReducer from "../helpers/createReducer";
 
 const initialState = {
   searchText: "",
