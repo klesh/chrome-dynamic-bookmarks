@@ -1,7 +1,8 @@
-import React from "react";
 import { AppBar, Tabs } from "@material-ui/core";
-import { LinkTab } from "shared/components/helpers";
-import type { GenericFunction } from "shared/types";
+import React from "react";
+
+import { LinkTab } from "@/shared/components/helpers";
+import type { GenericFunction } from "@/shared/types";
 
 function a11yProps(index: string | number) {
   return {
@@ -12,7 +13,7 @@ function a11yProps(index: string | number) {
 
 interface Props {
   value: number;
-  onChange: GenericFunction;
+  onChange?: GenericFunction;
 }
 
 const NavTabs = ({ value, onChange }: Props): JSX.Element => {

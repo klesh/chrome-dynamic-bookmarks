@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
+
+import { nodesSelector } from "@/shared/store/selectors/index";
+
 import createTree from "./createTree";
-import { nodesSelector } from "shared/store/selectors/index";
 
 const readonlyIds = ["0", "1", "2"];
 

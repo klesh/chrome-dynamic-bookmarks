@@ -1,17 +1,19 @@
+import { Divider,Menu, MenuItem } from "@material-ui/core";
 import React from "react";
 import { connect } from "react-redux";
-import { Menu, MenuItem, Divider } from "@material-ui/core";
+import { createSelector } from "reselect";
+
+import { DialogContext } from "@/shared/components/bookmarks";
+import { dialogIds } from "@/shared/constants";
 import {
-  removeBookmarkNode,
+  bookmarksByParentIdSelector,
+  clipboardSelector,
   copyToClipboard,
   cutToClipboard,
   pasteToBookmarkNode,
-  clipboardSelector,
-  bookmarksByParentIdSelector,
-} from "shared/store";
-import { DialogContext } from "shared/components/bookmarks";
-import { dialogIds } from "shared/constants";
-import { createSelector } from "reselect";
+  removeBookmarkNode,
+} from "@/shared/store";
+
 import OpenLinksActionMenuItems from "./OpenLinksActionMenuItems";
 
 export function FolderActionMenu(props) {

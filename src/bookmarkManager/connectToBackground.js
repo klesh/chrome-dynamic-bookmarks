@@ -1,4 +1,4 @@
-import { getCurrentBrowser } from "shared/lib/browser";
+import { getCurrentBrowser } from "@/shared/lib/browser";
 
 const browser = getCurrentBrowser();
 

@@ -1,4 +1,4 @@
-import { getCurrentBrowser, migrateStorage } from "shared/lib/browser";
+import { getCurrentBrowser, migrateStorage } from "@/shared/lib/browser";
 
 const browser = getCurrentBrowser();
 

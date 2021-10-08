@@ -1,4 +1,4 @@
-import { isTracked, isFolder } from "./comparisons";
+import { isFolder,isTracked } from "./comparisons";
 
 export default function getTrackedByIdNodes(nodes = {}, rootId = "0") {
   const trackedByNodeId = {};

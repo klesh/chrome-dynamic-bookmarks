@@ -1,5 +1,5 @@
-import responseTypes from "shared/constants/responseTypes";
-import { removeBookmarkNode } from "shared/lib/browser";
+import responseTypes from "@/shared/constants/responseTypes";
+import { removeBookmarkNode } from "@/shared/lib/browser";
 
 function removeBookmarkNodeAsync(id) {
   return new Promise(function (resolve, reject) {

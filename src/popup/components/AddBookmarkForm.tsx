@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
 import { CircularProgress, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { BookmarkForm } from "shared/components/bookmarks";
-import { sendMessage, getCurrentTab } from "shared/lib/browser";
-import { ADD_BM_NODE } from "shared/constants/requestTypes";
-import { generateRegExp } from "shared/lib/regexp";
-import { useSnackbar, withSnackbar } from "notistack";
+import { useSnackbar } from "notistack";
+import React, { useEffect,useState } from "react";
+
+import { BookmarkForm } from "@/shared/components/bookmarks";
+import { ADD_BM_NODE } from "@/shared/constants/requestTypes";
+import { getCurrentTab,sendMessage } from "@/shared/lib/browser";
+import { generateRegExp } from "@/shared/lib/regexp";
 
 const useStyles = makeStyles((theme) => ({
   progress: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddBookmarkForm = () => {
+const AddBookmarkForm = (): JSX.Element => {
   const { enqueueSnackbar } = useSnackbar();
   const [initialValues, setInitialValues] = useState(null);
 
@@ -50,4 +51,4 @@ const AddBookmarkForm = () => {
   );
 };
 
-export default withSnackbar(AddBookmarkForm);
+export default AddBookmarkForm;

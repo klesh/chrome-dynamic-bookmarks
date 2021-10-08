@@ -1,6 +1,7 @@
-import createReducer from "../helpers/createReducer";
+import { actionTypes, clipboardTypes } from "@/shared/constants";
+
 import ActionHandlerFactory from "../helpers/actionHandlerFactory";
-import { actionTypes, clipboardTypes } from "shared/constants";
+import createReducer from "../helpers/createReducer";
 
 const initialState = {};
 

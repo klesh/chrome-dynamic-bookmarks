@@ -1,8 +1,9 @@
+import { getBookmarkNodes } from "@/shared/store/actions";
+
 import connectToBackground from "./connectToBackground";
-import { getBookmarkNodes } from "shared/store/actions";
-import getEventReducer from "./getEventReducer";
-import createEventQueueHandler from "./createEventQueueHandler";
 import createDebouncedHandler from "./createDebouncedHandler";
+import createEventQueueHandler from "./createEventQueueHandler";
+import getEventReducer from "./getEventReducer";
 
 function initStore(store) {
   store.dispatch(getBookmarkNodes());

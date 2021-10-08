@@ -1,9 +1,11 @@
+import { Dialog, DialogContent,DialogTitle } from "@material-ui/core";
+import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { Dialog, DialogTitle, DialogContent } from "@material-ui/core";
+
+import { editBookmarkNode,makeUniqueNodeByIdSelector } from "@/shared/store";
+
 import { FolderForm } from "../form";
-import { makeUniqueNodeByIdSelector, editBookmarkNode } from "shared/store";
 
 export function EditFolderDialog(props) {
   const { onClose, open, node = {}, onSubmit } = props;

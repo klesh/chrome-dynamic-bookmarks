@@ -1,12 +1,15 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+
+import { ThemeProvider } from "@material-ui/styles";
+import { SnackbarProvider } from "notistack";
 import React from "react";
 import { render } from "react-dom";
-import Popup from "./Popup";
-import { SnackbarProvider } from "notistack";
-import { ThemeProvider } from "@material-ui/styles";
-import { SnackbarCloseButton } from "shared/components/helpers";
-import theme from "shared/theme";
+
+import { SnackbarCloseButton } from "@/shared/components/helpers";
+import theme from "@/shared/theme";
+
+import Popup from "./components/Popup";
 
 const App = () => {
   return (

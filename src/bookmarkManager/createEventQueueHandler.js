@@ -1,5 +1,5 @@
-import actionTypes from "shared/constants/actionTypes";
-import { logInfo } from "shared/lib/browser";
+import actionTypes from "@/shared/constants/actionTypes";
+import { logInfo } from "@/shared/lib/browser";
 
 export default function createEventQueueHandler(store, reducer) {
   return function queueHandler(eventQueue) {

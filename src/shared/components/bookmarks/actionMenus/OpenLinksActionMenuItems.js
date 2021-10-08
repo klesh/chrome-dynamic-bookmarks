@@ -1,11 +1,12 @@
-import React, { useCallback } from "react";
 import { MenuItem, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import React, { useCallback } from "react";
+
 import {
+  openNewIncognitoWindow,
   openNewTab,
   openNewWindow,
-  openNewIncognitoWindow,
-} from "shared/lib/browser";
+} from "@/shared/lib/browser";
 
 const useStyles = makeStyles(() => {
   return {

@@ -1,4 +1,4 @@
-import actionTypes from "shared/constants/actionTypes";
+import actionTypes from "@/shared/constants/actionTypes";
 
 function successHandler(_, action) {
   return {

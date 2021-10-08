@@ -1,5 +1,5 @@
-import responseTypes from "shared/constants/responseTypes";
-import { copyBookmarkNode } from "shared/lib/browser";
+import responseTypes from "@/shared/constants/responseTypes";
+import { copyBookmarkNode } from "@/shared/lib/browser";
 
 function copyBookmarkNodeAsync(id, destination) {
   return new Promise(function (resolve, reject) {

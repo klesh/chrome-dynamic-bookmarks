@@ -1,5 +1,6 @@
-import React from "react";
 import { Drawer, Hidden } from "@material-ui/core";
+import React from "react";
+
 import SideNavContent from "./SideNavContent";
 
 export default function SideNav({

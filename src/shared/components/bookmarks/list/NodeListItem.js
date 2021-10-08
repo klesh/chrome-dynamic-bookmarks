@@ -1,22 +1,24 @@
 import React, { useCallback } from "react";
 import { connect } from "react-redux";
-import FolderListItem from "./FolderListItem";
-import FileListItem from "./FileListItem";
-import { isFolder } from "shared/lib/bookmarkNodes";
+
+import { actionMenuIds } from "@/shared/constants";
+import { isFolder } from "@/shared/lib/bookmarkNodes";
+import { setDragTextData } from "@/shared/lib/dragAndDrop";
 import {
+  selectRangeByPivot,
+  setSelectedPivot,
+  toggleSelected,
+} from "@/shared/store/actions";
+import {
+  filteredNodeIdsSelector,
+  makeUniqueNodeByIdSelector,
   selectedByNodeIdSelector,
   selectedNodeIdsSelector,
-  makeUniqueNodeByIdSelector,
-  filteredNodeIdsSelector,
-} from "shared/store/selectors/index";
-import { setDragTextData } from "shared/lib/dragAndDrop";
+} from "@/shared/store/selectors/index";
+
 import { getAnchorElement, getAnchorPosition } from "../actionMenus";
-import {
-  toggleSelected,
-  setSelectedPivot,
-  selectRangeByPivot,
-} from "shared/store/actions";
-import { actionMenuIds } from "shared/constants";
+import FileListItem from "./FileListItem";
+import FolderListItem from "./FolderListItem";
 
 function NodeListItem(props) {
   const {
