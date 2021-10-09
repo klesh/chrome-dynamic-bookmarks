@@ -1,10 +1,11 @@
-import React from "react";
-import clsx from "clsx";
-import { connect } from "react-redux";
+import { Breadcrumbs, Link,Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Breadcrumbs, Link } from "@material-ui/core";
-import { applyFilter as applyFilterAction } from "shared/store/actions";
-import { breadcrumbsSelector } from "shared/store/selectors/index";
+import clsx from "clsx";
+import React from "react";
+import { connect } from "react-redux";
+
+import { applyFilter as applyFilterAction } from "@/shared/store/actions";
+import { breadcrumbsSelector } from "@/shared/store/selectors/index";
 
 const useStyles = makeStyles((theme) => ({
   root: {

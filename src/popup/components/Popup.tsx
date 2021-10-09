@@ -1,15 +1,18 @@
+import { Box, CssBaseline } from "@material-ui/core";
 import React, { useState } from "react";
-import NavTabs from "./NavTabs";
-import AddBookmarkForm from "./AddBookmarkForm";
-import { CssBaseline, Box } from "@material-ui/core";
-import { TabPanel } from "shared/components/helpers";
 
-export default function Popup(): JSX.Element {
+import { TabPanel } from "@/shared/components/helpers";
+import { GenericFunction } from "@/shared/types";
+
+import AddBookmarkForm from "./AddBookmarkForm";
+import NavTabs from "./NavTabs";
+
+const Popup: React.VFC = () => {
   const [value, setValue] = useState(0);
 
-  function handleChange(_event, newValue) {
+  const handleChange: GenericFunction = (_event, newValue) => {
     setValue(newValue);
-  }
+  };
 
   return (
     <Box>
@@ -20,4 +23,6 @@ export default function Popup(): JSX.Element {
       </TabPanel>
     </Box>
   );
-}
+};
+
+export default Popup;

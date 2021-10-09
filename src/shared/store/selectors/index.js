@@ -1,13 +1,14 @@
 import { createSelector } from "reselect";
+
 import {
-  isRoot,
-  getSortedNodes,
-  getFilteredNodes,
   getBreadcrumbIds,
+  getFilteredNodes,
+  getSortedNodes,
   isFile,
-} from "shared/lib/bookmarkNodes";
-import { mapArrayToObject } from "shared/lib/objects";
-import getTrackedByIdNodes from "shared/lib/bookmarkNodes/getTrackedByIdNodes";
+  isRoot,
+} from "@/shared/lib/bookmarkNodes";
+import getTrackedByIdNodes from "@/shared/lib/bookmarkNodes/getTrackedByIdNodes";
+import { mapArrayToObject } from "@/shared/lib/objects";
 
 export const clipboardSelector = (state) => state.clipboard;
 

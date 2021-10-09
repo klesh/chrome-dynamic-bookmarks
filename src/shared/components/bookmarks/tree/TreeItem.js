@@ -1,7 +1,8 @@
-import React, { useRef, useEffect, useCallback } from "react";
-import clsx from "clsx";
-import { Typography, Collapse, Box } from "@material-ui/core";
+import { Box,Collapse, Typography } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import clsx from "clsx";
+import React, { useCallback,useEffect, useRef } from "react";
+
 import useStyles from "./TreeItemStyles";
 
 const defaultChildren = [];

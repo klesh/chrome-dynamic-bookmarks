@@ -13,8 +13,10 @@ const presets = [
 const plugins = [
   "react-hot-loader/babel",
   "@babel/plugin-syntax-dynamic-import",
-  "@babel/plugin-proposal-class-properties",
   "@babel/plugin-transform-async-to-generator",
+  ["@babel/plugin-proposal-private-methods", { loose: true }],
+  ["@babel/plugin-proposal-class-properties", { loose: true }],
+  ["@babel/plugin-proposal-private-property-in-object", { loose: true }],
   [
     "babel-plugin-import",
     {

@@ -1,6 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
 import InsertDriveFileIcon from "@material-ui/icons/InsertDriveFile";
+import PropTypes from "prop-types";
+import React from "react";
+
 import TreeItem from "./TreeItem";
 
 export default function FileTreeItem({ node }) {

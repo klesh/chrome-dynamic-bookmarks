@@ -1,5 +1,6 @@
 import { createTheme } from "@material-ui/core/styles";
 import merge from "lodash/merge";
+
 import type { CustomThemeOptions } from "./types/theme.types";
 
 const commonTheme: CustomThemeOptions = {

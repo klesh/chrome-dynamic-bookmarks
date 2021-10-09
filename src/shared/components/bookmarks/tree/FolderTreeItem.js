@@ -1,19 +1,21 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FolderIcon from "@material-ui/icons/Folder";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import { openFolder, moveBookmarkNode } from "shared/store/actions";
+import PropTypes from "prop-types";
+import React, { useCallback,useContext, useEffect, useState } from "react";
+import { connect } from "react-redux";
+
+import { actionMenuIds } from "@/shared/constants";
+import { moveBookmarkNode,openFolder } from "@/shared/store/actions";
 import {
   breadcrumbIdsSelector,
   filterSelector,
   trackedByIdSelector,
-} from "shared/store/selectors/index";
-import TreeItem from "./TreeItem";
+} from "@/shared/store/selectors/index";
+
 import { ActionMenuContext, getAnchorPosition } from "../actionMenus";
-import { actionMenuIds } from "shared/constants";
+import TreeItem from "./TreeItem";
 
 export function FolderTreeItem({
   node,

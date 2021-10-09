@@ -1,15 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
 import { AppBar, Box } from "@material-ui/core";
+import React from "react";
+import { IgnoreKeys } from "react-hotkeys";
+import { connect } from "react-redux";
+
+import { filterSelector,selectedNodeIdsSelector } from "@/shared/store";
 import {
   applyFilter,
   clearSelected,
   removeBookmarkNode,
-} from "shared/store/actions";
+} from "@/shared/store/actions";
+
 import MainNavToolbar from "./MainNavToolbar";
-import { selectedNodeIdsSelector, filterSelector } from "shared/store";
 import MainNavToolbarSelected from "./MainNavToolbarSelected";
-import { IgnoreKeys } from "react-hotkeys";
 
 export function MainNav({
   className,

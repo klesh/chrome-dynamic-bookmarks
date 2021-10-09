@@ -1,6 +1,7 @@
-import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { BookmarkTreeView } from "shared/components/bookmarks";
+import React from "react";
+
+import { BookmarkTreeView } from "@/shared/components/bookmarks";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,

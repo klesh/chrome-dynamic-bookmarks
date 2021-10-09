@@ -1,4 +1,4 @@
-import { actionTypes } from "shared/constants";
+import { actionTypes } from "@/shared/constants";
 
 export function applyFilter(filter = {}) {
   return (dispatch) => {

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import { useDebounce } from "shared/lib/hooks";
+import PropTypes from "prop-types";
+import React, { useEffect,useState } from "react";
+
+import { useDebounce } from "@/shared/lib/hooks";
 
 const useStyles = makeStyles((theme) => ({
   search: {

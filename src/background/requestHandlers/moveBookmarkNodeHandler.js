@@ -1,5 +1,5 @@
-import responseTypes from "shared/constants/responseTypes";
-import { bm as bookmarks } from "shared/lib/browser/bookmarks";
+import responseTypes from "@/shared/constants/responseTypes";
+import { bm as bookmarks } from "@/shared/lib/browser/bookmarks";
 
 function isSameNode(id = "", { parentId = "" }) {
   return id === parentId;
