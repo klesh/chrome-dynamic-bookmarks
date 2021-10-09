@@ -1,6 +1,3 @@
-{
-  /* <CssBaseline /> */
-}
 import React from "react";
 import { DecoratorFunction } from "@storybook/addons";
 import { CssBaseline } from "@material-ui/core";
