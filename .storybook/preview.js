@@ -1,10 +1,11 @@
 import { muiTheme } from "storybook-addon-material-ui";
-import { notification } from "./decorators";
+import { notification, baseline } from "./decorators";
 import { getTheme } from "@/shared/theme";
 import "./mocks/browser";
 
 export const decorators = [
   muiTheme([getTheme("dark"), getTheme("light")]),
+  baseline(),
   notification(),
 ].reverse();
 
