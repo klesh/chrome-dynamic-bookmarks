@@ -3,7 +3,7 @@
  */
 export default function getCurrentBrowser(): typeof chrome {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const currentBrowser = window.chrome || (window as any)?.browser;
+  const currentBrowser = chrome || self?.chrome || (self as any)?.browser;
 
   if (currentBrowser) {
     return currentBrowser;

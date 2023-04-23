@@ -1,18 +1,18 @@
 import InputBase from "@material-ui/core/InputBase";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { alpha, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import PropTypes from "prop-types";
-import React, { useEffect,useState } from "react";
+import React from "react";
 
-import { useDebounce } from "@/shared/lib/hooks";
+import { useDebouncedCallback } from "@/shared/lib/hooks";
 
 const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
     width: "100%",
@@ -47,16 +47,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SearchInput(props) {
+  const { onChange } = props;
   const classes = useStyles();
-  const [searchTerm, setSearchTerm] = useState("");
-  const debouncedSearchedTerm = useDebounce(searchTerm, 500);
 
-  useEffect(
-    () => {
-      props.onChange(debouncedSearchedTerm);
-    },
-    [debouncedSearchedTerm] // Only call effect if debounced search term changes
-  );
+  const debouncedOnChange = useDebouncedCallback((value) => {
+    onChange(value);
+  });
 
   return (
     <div className={classes.search}>
@@ -70,7 +66,7 @@ export default function SearchInput(props) {
           input: classes.inputInput,
         }}
         inputProps={{ "aria-label": "search" }}
-        onChange={(event) => setSearchTerm(event.target.value)}
+        onChange={(event) => debouncedOnChange(event.target.value)}
       />
     </div>
   );

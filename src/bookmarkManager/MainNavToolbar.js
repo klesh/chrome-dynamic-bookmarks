@@ -1,7 +1,7 @@
 import { IconButton, Toolbar, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles } from "@material-ui/styles";
-import React from "react";
+import React, { useCallback } from "react";
 
 import { SearchInput } from "@/shared/components/helpers";
 
@@ -32,14 +32,17 @@ export default function MainNavToolbar({
 }) {
   const classes = useStyles();
 
-  function handleSearchInputChange(searchText) {
-    if (!searchText) {
-      applyFilter({ parentId: oldParentId || filter.parentId });
-    } else {
-      oldParentId = filter.parentId;
-      applyFilter({ searchText });
-    }
-  }
+  const handleSearchInputChange = useCallback(
+    (searchText) => {
+      if (!searchText) {
+        applyFilter({ parentId: oldParentId || filter.parentId });
+      } else {
+        oldParentId = filter.parentId;
+        applyFilter({ searchText });
+      }
+    },
+    [applyFilter, filter.parentId]
+  );
 
   return (
     <Toolbar>
