@@ -2,7 +2,7 @@ const commonPaths = require("./common-paths");
 
 const options = {
   mode: "development",
-  devtool: "eval-source-map",
+  devtool: "cheap-module-source-map",
   output: {
     publicPath: "/",
   },

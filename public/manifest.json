@@ -1,13 +1,13 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Dynamic Bookmarks",
   "description": "Chrome extension which dynamically updates bookmarks based on the specified regular expression.",
-  "version": "2.6.0",
-  "permissions": ["tabs", "bookmarks", "storage", "chrome://favicon/"],
+  "version": "x.x.x",
+  "permissions": ["tabs", "bookmarks", "storage", "favicon"],
   "background": {
-    "page": "background.html"
+    "service_worker": "background.bundle.js"
   },
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons8_Books_16.png",
@@ -24,5 +24,12 @@
     "64": "icons8_Books_64.png",
     "128": "icons8_Books_128.png"
   },
-  "content_security_policy": "connect-src ws://localhost:8097; script-src 'self' 'unsafe-eval' https://fonts.googleapis.com http://localhost:8097; object-src 'self'; font-src 'self' https://fonts.gstatic.com"
+  "content_security_policy": {
+    "connect-src": "ws://localhost:8097",
+    "script-src": "self http://localhost:8097",
+    "object-src": "self",
+    "img-src": "self chrome://favicon",
+    "font-src": "self https://fonts.gstatic.com https://fonts.googleapis.com",
+    "style-src": "self https://fonts.googleapis.com/"
+  }
 }

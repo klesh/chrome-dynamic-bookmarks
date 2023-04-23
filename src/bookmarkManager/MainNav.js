@@ -3,7 +3,7 @@ import React from "react";
 import { IgnoreKeys } from "react-hotkeys";
 import { connect } from "react-redux";
 
-import { filterSelector,selectedNodeIdsSelector } from "@/shared/store";
+import { filterSelector, selectedNodeIdsSelector } from "@/shared/store";
 import {
   applyFilter,
   clearSelected,

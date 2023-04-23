@@ -33,6 +33,7 @@ const options = {
     ),
   },
   output: {
+    globalObject: "this",
     path: commonPaths.outputPath,
     filename: "[name].bundle.js",
   },
@@ -113,11 +114,6 @@ const options = {
       template: path.join(commonPaths.publicPath, "options.html"),
       filename: "options.html",
       chunks: ["options"],
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(commonPaths.publicPath, "background.html"),
-      filename: "background.html",
-      excludeChunks: ["bookmarkManager", "options", "popup"],
     }),
     new HtmlWebpackPlugin({
       template: path.join(commonPaths.publicPath, "bookmarkManager.html"),
