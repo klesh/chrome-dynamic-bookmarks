@@ -1,6 +1,5 @@
 import { logError, logInfo } from "@/shared/lib/browser/log";
-
-import { Migrator260 } from "./_migration-2.6.0";
+import migrateStorageToLocal from "./migrateStorageToLocal";
 
 /**
  * Used to migrate data to new storage when updating application
@@ -8,12 +7,11 @@ import { Migrator260 } from "./_migration-2.6.0";
 export function migrateStorage() {
   logInfo("Running migrations...");
   try {
-    let migrator_260 = new Migrator260();
-    migrator_260.up((err) => {
+    migrateStorageToLocal((err) => {
       if (err) {
         logError(err);
       } else {
-        logInfo("Finished migrating the data to 2.6.x storage.");
+        logInfo("Finished migrating the data to local storage.");
       }
     });
   } catch (e) {

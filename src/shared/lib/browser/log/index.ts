@@ -3,7 +3,7 @@ import getCurrentBrowser from "../getCurrentBrowser";
 const browser = getCurrentBrowser();
 const runtime = browser.runtime;
 
-export function logInfo(msg, ...optionalParams) {
+export function logInfo(msg: string, ...optionalParams: unknown[]) {
   if (!msg) {
     return;
   }
@@ -14,12 +14,12 @@ export function logInfo(msg, ...optionalParams) {
   }
 }
 
-export function logError(errMsg) {
+export function logError(errMsg: string | null | undefined) {
   if (errMsg) {
     console.error(errMsg);
   }
 }
-export function logWarn(msg) {
+export function logWarn(msg: string | null | undefined) {
   if (msg) {
     console.warn(msg);
   }
@@ -27,7 +27,6 @@ export function logWarn(msg) {
 
 /**
  * Checks if there is an error, if found calls callback function and returns `true` else `false`
- * @param {function} onErrorFound - callback to call if error was found
  */
 export function checkAndHandleError(onErrorFound = logError) {
   if (runtime.lastError) {
