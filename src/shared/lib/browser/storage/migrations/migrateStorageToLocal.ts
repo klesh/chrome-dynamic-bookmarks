@@ -1,4 +1,5 @@
 import isObjectEmpty from "@/shared/lib/objects/isObjectEmpty";
+
 import getCurrentBrowser from "../../getCurrentBrowser";
 import { logError, logInfo } from "../../log";
 import { DynamicBookmarksManager } from "../DynamicBookmarksManager";

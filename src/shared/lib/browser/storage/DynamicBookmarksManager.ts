@@ -1,7 +1,11 @@
-import { checkAndHandleError, logError } from "@/shared/lib/browser/log";
+import {
+  checkAndHandleError,
+  logError,
+  logInfo,
+} from "@/shared/lib/browser/log";
+import { DynamicBookmark } from "@/shared/types/bookmark.types";
 
 import getCurrentBrowser from "../getCurrentBrowser";
-import { DynamicBookmark } from "@/shared/types/bookmark.types";
 
 const browser = getCurrentBrowser();
 
@@ -112,7 +116,7 @@ export class DynamicBookmarksManager {
     done: typeof logError
   ) {
     const newDynBookMapped = _cloneWithMappedKeys(newDynBookmarks);
-    console.log("dynBookMapped", newDynBookMapped);
+    logInfo("dynBookMapped", newDynBookMapped);
     this._getAllIds((errMsg, ids = []) => {
       if (errMsg) return done(errMsg);
       const idsToRemove = this._getIdsToRemove(ids, newDynBookMapped);
@@ -141,7 +145,7 @@ export class DynamicBookmarksManager {
   }
 
   private _removeIds(idsToRemove: string[]) {
-    console.log("Removing ids: ", idsToRemove);
+    logInfo("Removing ids: ", idsToRemove);
     if (idsToRemove.length > 0) {
       this.storage.remove(idsToRemove, () => checkAndHandleError());
     }
@@ -150,7 +154,7 @@ export class DynamicBookmarksManager {
     newDynBookMapped: Record<string, DynamicBookmark>,
     done: typeof logError
   ) {
-    console.log("Updating storage items to ", newDynBookMapped);
+    logInfo("Updating storage items to ", newDynBookMapped);
     const newKeys = Object.keys(newDynBookMapped);
     this.storage.set({ [dbmIdsPropName]: newKeys, ...newDynBookMapped }, () => {
       if (!checkAndHandleError(done)) {
@@ -206,9 +210,9 @@ function _convertToDbmId(id: string) {
 }
 
 function _cloneWithMappedKeys(obj = {}, keyMap = _convertToDbmId) {
-  let retVal = {};
-  for (let key in obj) {
-    let dbmId = keyMap(key);
+  const retVal = {};
+  for (const key in obj) {
+    const dbmId = keyMap(key);
     retVal[dbmId] = obj[key];
   }
   return retVal;

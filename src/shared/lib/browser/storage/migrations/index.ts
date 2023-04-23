@@ -1,4 +1,5 @@
 import { logError, logInfo } from "@/shared/lib/browser/log";
+
 import migrateStorageToLocal from "./migrateStorageToLocal";
 
 /**
