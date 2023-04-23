@@ -1,4 +1,9 @@
-import { checkAndHandleError } from "@/shared/lib/browser/log";
+import {
+  checkAndHandleError,
+  logError,
+  logInfo,
+} from "@/shared/lib/browser/log";
+import { DynamicBookmark } from "@/shared/types/bookmark.types";
 
 import getCurrentBrowser from "../getCurrentBrowser";
 
@@ -6,15 +11,22 @@ const browser = getCurrentBrowser();
 
 export const dbmIdsPropName = "dbm_ids";
 
-export class Dbm260 {
-  constructor(storage = browser.storage.sync) {
+export class DynamicBookmarksManager {
+  private storage: typeof chrome.storage.local;
+
+  constructor(
+    storage: typeof chrome.storage.local | typeof chrome.storage.sync = browser
+      .storage.local
+  ) {
     this.storage = storage;
   }
 
   /**`
    * @param {function} done - callback function called with `done(error, dynBook)`
    */
-  findAll = (done) => {
+  findAll = (
+    done: (error: string | null, item?: Record<string, DynamicBookmark>) => void
+  ) => {
     this._getAllIds((errMsg, ids = []) => {
       if (errMsg) return done(errMsg);
       this.storage.get(ids, (result) => {
@@ -30,7 +42,10 @@ export class Dbm260 {
    * @param {string} id - id of dynamic bookmark
    * @param {function} done - callback function called with `done(error, dynBookItem)`
    */
-  findById = (id, done) => {
+  findById = (
+    id: string,
+    done: (error: string | null, item?: DynamicBookmark) => void
+  ) => {
     const key = _convertToDbmId(id);
     this.storage.get([key], (result) => {
       if (!checkAndHandleError(done)) {
@@ -43,7 +58,7 @@ export class Dbm260 {
    * @param {string} id - id of dynamic bookmark
    * @param {function} done - callback function called with `done(error)`
    */
-  findByIdAndRemove = (id, done) => {
+  findByIdAndRemove = (id: string, done: typeof logError) => {
     const key = _convertToDbmId(id);
     this.storage.remove([key], () => {
       if (!checkAndHandleError(done)) {
@@ -54,11 +69,15 @@ export class Dbm260 {
 
   /**
    * Attempts to update dynamic bookmark. If it does not exist a new bookmark will be created.
-   * @param {string} id - id of dynamic bookmark
-   * @param {object} options - `{regExp: String, history:[String]}`
-   * @param {function} done - (optional) callback function called with `done(error, updatedDynBookItem)`
    */
-  findByIdAndUpdate = (id, { regExp, history }, done) => {
+  findByIdAndUpdate = (
+    id: string,
+    { regExp, history }: DynamicBookmark,
+    done: (
+      error: string | null,
+      updatedItem?: { id: string } & DynamicBookmark
+    ) => void
+  ) => {
     const key = _convertToDbmId(id);
     this.findById(key, (errMsg, item) => {
       if (errMsg) return done(errMsg);
@@ -75,10 +94,11 @@ export class Dbm260 {
 
   /**
    * Creates dynBookmark item and sets it into the storage
-   * @param {object} props - `{id:String, regExp:String, history:[String] (optional)}`
-   * @param {function} done - callback function called with (err, createdItem)
    */
-  create({ id = "", regExp = "", history = [] }, done) {
+  create(
+    { id = "", regExp = "", history = [] },
+    done: (error: string | null, createdItem?: DynamicBookmark) => void
+  ) {
     const key = _convertToDbmId(id);
     this._setItem(key, { regExp, history }, (errMsg, createdItem) => {
       if (errMsg) return done(errMsg);
@@ -90,12 +110,13 @@ export class Dbm260 {
   /**
    * Overwrites dynamic bookmarks object from storage with `newDynBook`.
    * `Warning`: This function is **DANGEROUS**! Potential data loss!
-   * @param {object} newDynBook - new dynamic bookmarks object in form `{bookmark_id: {regExp: String, history:[String]}}`
-   * @param {function} done - callback function called with `done(errMsg: String)`
    */
-  overwrite(newDynBook = {}, done) {
-    const newDynBookMapped = _cloneWithMappedKeys(newDynBook);
-    console.log("dynBookMapped", newDynBookMapped);
+  overwrite(
+    newDynBookmarks: Record<string, DynamicBookmark> = {},
+    done: typeof logError
+  ) {
+    const newDynBookMapped = _cloneWithMappedKeys(newDynBookmarks);
+    logInfo("dynBookMapped", newDynBookMapped);
     this._getAllIds((errMsg, ids = []) => {
       if (errMsg) return done(errMsg);
       const idsToRemove = this._getIdsToRemove(ids, newDynBookMapped);
@@ -106,9 +127,8 @@ export class Dbm260 {
 
   /**
    * Returns list of tracked dbm ids
-   * @param {function} done - callback function called with `done(errMsg: string, ids: string[])`
    */
-  _getAllIds(done) {
+  private _getAllIds(done: (error: string | null, ids?: string[]) => void) {
     this.storage.get([dbmIdsPropName], (result) => {
       if (!checkAndHandleError(done)) {
         const ids = result[dbmIdsPropName] || [];
@@ -116,19 +136,25 @@ export class Dbm260 {
       }
     });
   }
-  _getIdsToRemove(dbmIds = [], newDynBookMapped = {}) {
+  private _getIdsToRemove(
+    dbmIds: string[] = [],
+    newDynBookMapped: Record<string, DynamicBookmark> = {}
+  ) {
     const idsToRemove = dbmIds.filter((key) => !(key in newDynBookMapped));
     return idsToRemove;
   }
 
-  _removeIds(idsToRemove) {
-    console.log("Removing ids: ", idsToRemove);
+  private _removeIds(idsToRemove: string[]) {
+    logInfo("Removing ids: ", idsToRemove);
     if (idsToRemove.length > 0) {
       this.storage.remove(idsToRemove, () => checkAndHandleError());
     }
   }
-  _updateStorageItems(newDynBookMapped, done) {
-    console.log("Updating storage items to ", newDynBookMapped);
+  private _updateStorageItems(
+    newDynBookMapped: Record<string, DynamicBookmark>,
+    done: typeof logError
+  ) {
+    logInfo("Updating storage items to ", newDynBookMapped);
     const newKeys = Object.keys(newDynBookMapped);
     this.storage.set({ [dbmIdsPropName]: newKeys, ...newDynBookMapped }, () => {
       if (!checkAndHandleError(done)) {
@@ -139,10 +165,8 @@ export class Dbm260 {
 
   /**
    * Adds `key` if it doesn't already exist to `dbm_ids`
-   * @param {string} key - Key to add
-   * @param {function} done - Callback function called with `done(errMsg)`
    */
-  _addKeyToDbmIds(key, done) {
+  private _addKeyToDbmIds(key: string, done: typeof logError) {
     this._getAllIds((errMsg, ids = []) => {
       if (errMsg) return done(errMsg);
       if (ids.includes(key)) {
@@ -152,8 +176,8 @@ export class Dbm260 {
       this._setItem(dbmIdsPropName, ids, done);
     });
   }
-  _removeKeyFromDbmIds(key, done) {
-    this._getAllIds((errMsg, ids = []) => {
+  private _removeKeyFromDbmIds(key: string, done: typeof logError) {
+    this._getAllIds((errMsg, ids) => {
       if (errMsg) return done(errMsg);
       const newIds = ids.filter((el) => el !== key);
       this._setItem(dbmIdsPropName, newIds, done);
@@ -161,9 +185,12 @@ export class Dbm260 {
   }
   /**
    * Sets `item` as `{[key]: item}` in `storage`.
-   * @param {function} done - callback function called with `done(errMsg, storageItem)`
    */
-  _setItem(key, item, done) {
+  private _setItem<T>(
+    key: string,
+    item: T,
+    done: (error: string | null, item?: T) => void
+  ) {
     this.storage.set({ [key]: item }, () => {
       if (!checkAndHandleError(done)) {
         done(null, item);
@@ -175,7 +202,7 @@ export class Dbm260 {
 function _convertToBookmarkId(dbmId = "") {
   return dbmId.replace(/^dbm_/, "");
 }
-function _convertToDbmId(id) {
+function _convertToDbmId(id: string) {
   if (/^dbm_.*/.test(id)) {
     return id;
   }
@@ -183,12 +210,12 @@ function _convertToDbmId(id) {
 }
 
 function _cloneWithMappedKeys(obj = {}, keyMap = _convertToDbmId) {
-  let retVal = {};
-  for (let key in obj) {
-    let dbmId = keyMap(key);
+  const retVal = {};
+  for (const key in obj) {
+    const dbmId = keyMap(key);
     retVal[dbmId] = obj[key];
   }
   return retVal;
 }
 
-export default new Dbm260();
+export default new DynamicBookmarksManager();
