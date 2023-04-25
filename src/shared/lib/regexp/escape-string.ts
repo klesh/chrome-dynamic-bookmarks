@@ -3,6 +3,6 @@
  * into `\\ \^ \$ \* \+ \? \. \( \) \| \{ \} \[ \] `
  * @param {string} regExpString - string to escape
  */
-export default function escapeRegExp(regExpString) {
+export default function escapeRegExp(regExpString: string): string {
   return regExpString.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
 }

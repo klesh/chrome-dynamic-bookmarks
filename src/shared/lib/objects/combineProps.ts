@@ -12,9 +12,9 @@ export function combineProps(lhs = {}, rhs = {}) {
 /**
  * For object `{A:{propA}, B:{propB}}` and `{A:{propA2}, C:{propC}}` returns `{A:{propA, propA2}}`
  */
-function _combineCommonProps(lhs, rhs) {
-  let retVal = {};
-  for (let key in lhs) {
+function _combineCommonProps(lhs = {}, rhs = {}) {
+  const retVal = {};
+  for (const key in lhs) {
     if (!(key in rhs)) {
       continue;
     }

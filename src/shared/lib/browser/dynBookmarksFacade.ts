@@ -12,7 +12,7 @@ function copyBookmarkAsync(node) {
 async function copyFolderAsync(fromFolder) {
   const createdFolder = await bookmarks.createAsync(fromFolder);
   const createdChildren = [];
-  for (let fromChild of fromFolder.children) {
+  for (const fromChild of fromFolder.children) {
     const promise = copyNodeAsync({ ...fromChild, parentId: createdFolder.id });
     createdChildren.push(promise);
   }

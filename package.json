@@ -10,6 +10,7 @@
     "build": "cross-env NODE_ENV=production webpack -p --env.env=prod",
     "build:analyze": "cross-env NODE_ENV=production webpack -p --env.env=prod --env.addons=bundleanalyzer",
     "clean": "rimraf build",
+    "check:types": "tsc",
     "reset": "rimraf node_modules",
     "test": "jest",
     "lint": "eslint  --ext .jsx,.js,.ts,.tsx ./src",

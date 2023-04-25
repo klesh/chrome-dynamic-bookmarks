@@ -8,4 +8,4 @@ export default {
   addFolderDialogId,
   editBookmarkDialogId,
   editFolderDialogId,
-};
+} as const;
