@@ -1,8 +1,18 @@
 import { removeProp } from "@/shared/lib/objects";
+import {
+  ActionHandler,
+  BookmarkNodesAction,
+  BookmarkNodesState,
+} from "@/shared/types";
 
 import { getNode } from "./getNode";
 
-export function onNodeRemoved(state, { data = {} }) {
+export const onNodeRemoved: ActionHandler<
+  BookmarkNodesState,
+  BookmarkNodesAction
+> = (state, { data }) => {
+  if (!data) return state;
+
   const nodeId = data.id;
   const node = getNode(state, nodeId, null);
   if (!node) {
@@ -15,4 +25,4 @@ export function onNodeRemoved(state, { data = {} }) {
     children: parentNode.children.filter((childId) => childId !== nodeId),
   };
   return { ...state, data: newData };
-}
+};

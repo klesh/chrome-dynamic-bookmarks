@@ -1,14 +1,24 @@
 import { isFolder } from "@/shared/lib/bookmarkNodes";
+import {
+  ActionHandler,
+  BookmarkNodesAction,
+  BookmarkNodesState,
+} from "@/shared/types";
 
 import { getNode } from "./getNode";
 import { onNodeChanged } from "./onNodeChanged";
 
-export function onNodeCreated(state, { data = {} }) {
+export const onNodeCreated: ActionHandler<
+  BookmarkNodesState,
+  BookmarkNodesAction
+> = (state, { data }) => {
+  if (!data) return state;
+
   const nodeId = data.id;
   if (nodeId in state.data) {
     return onNodeChanged(state, { data });
   }
-  let newNode = { ...data };
+  const newNode = { ...data };
   if (isFolder(newNode) && !newNode.children) {
     newNode.children = [];
   }
@@ -24,4 +34,4 @@ export function onNodeCreated(state, { data = {} }) {
       [nodeId]: newNode,
     },
   };
-}
+};

@@ -1,6 +1,6 @@
-import { BookmarkTreeNode, NormalizedBookmarkTreeNode } from "@/shared/types";
+import { BrowserBookmark, NormalizedBrowserBookmark } from "@/shared/types";
 
-function isFile(node: BookmarkTreeNode) {
+function isFile(node: chrome.bookmarks.BookmarkTreeNode) {
   return !!node.url;
 }
 
@@ -9,8 +9,8 @@ function isFile(node: BookmarkTreeNode) {
  * @param {node} treeRoot - root of the bookmark tree to normalize
  */
 export default function normalizeBookmarkTree(
-  treeRoot: BookmarkTreeNode
-): Record<string, NormalizedBookmarkTreeNode> {
+  treeRoot: BrowserBookmark
+): Record<string, NormalizedBrowserBookmark> {
   const normalized = {};
 
   (function traverseTree(node) {

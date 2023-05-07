@@ -1,5 +1,5 @@
 import { checkAndHandleError } from "@/shared/lib/browser/log";
-import { BookmarkTreeNode } from "@/shared/types/bookmark.types";
+import { BrowserBookmark } from "@/shared/types/bookmark.types";
 
 import getCurrentBrowser from "../getCurrentBrowser";
 
@@ -17,7 +17,7 @@ export function create(
     parentId = undefined,
     index = undefined,
   }: chrome.bookmarks.BookmarkCreateArg,
-  done: (errMsg: string, newBookmark?: BookmarkTreeNode) => void
+  done: (errMsg: string, newBookmark?: BrowserBookmark) => void
 ) {
   bookmarks.create({ title, url, parentId, index }, (newBookmark) => {
     if (!checkAndHandleError(done)) {
@@ -32,7 +32,7 @@ export function create(
  * @returns Promise object represents the newly created bookmark / folder
  */
 export function createAsync(bookmarkNode: chrome.bookmarks.BookmarkCreateArg) {
-  return new Promise<BookmarkTreeNode>(function (resolve, reject) {
+  return new Promise<BrowserBookmark>(function (resolve, reject) {
     create(bookmarkNode, function (err, data) {
       if (err) reject(err);
       else resolve(data);
@@ -42,7 +42,7 @@ export function createAsync(bookmarkNode: chrome.bookmarks.BookmarkCreateArg) {
 
 export function get(
   id: string,
-  done: (errMsg: string, node?: BookmarkTreeNode) => void
+  done: (errMsg: string, node?: BrowserBookmark) => void
 ) {
   bookmarks.get(id, (results) => {
     if (!checkAndHandleError(done)) {
@@ -57,7 +57,7 @@ export function get(
  */
 export function getSubTree(
   id: string,
-  done: (err: string, rootNode?: BookmarkTreeNode) => void
+  done: (err: string, rootNode?: BrowserBookmark) => void
 ) {
   bookmarks.getSubTree(id, (results) => {
     if (!checkAndHandleError(done)) {
@@ -71,7 +71,7 @@ export function getSubTree(
  * Retrives the root node of the bookmarks
  */
 export function getTreeRoot(
-  done: (err: string, rootNode?: BookmarkTreeNode) => void
+  done: (err: string, rootNode?: BrowserBookmark) => void
 ) {
   bookmarks.getTree((results) => {
     if (!checkAndHandleError(done)) {
@@ -86,7 +86,7 @@ export function getTreeRoot(
  */
 export function getChildren(
   id: string,
-  done: (children?: BookmarkTreeNode[]) => void
+  done: (children?: BrowserBookmark[]) => void
 ) {
   bookmarks.getChildren(id, (results) => {
     if (checkAndHandleError()) {
@@ -104,7 +104,7 @@ export function getChildren(
  */
 export function search(
   query: string | chrome.bookmarks.BookmarkSearchQuery,
-  done: (results?: BookmarkTreeNode[]) => void
+  done: (results?: BrowserBookmark[]) => void
 ) {
   bookmarks.search(query || ({} as unknown), (results) => {
     if (checkAndHandleError()) {
@@ -118,7 +118,7 @@ export function search(
 export function move(
   id: string,
   { parentId, index }: chrome.bookmarks.BookmarkDestinationArg,
-  done: (errMsg: string, node?: BookmarkTreeNode) => void
+  done: (errMsg: string, node?: BrowserBookmark) => void
 ) {
   bookmarks.move(id, { parentId, index }, (result) => {
     if (!checkAndHandleError(done)) {
@@ -130,7 +130,7 @@ export function move(
 export function update(
   id: string,
   changes: chrome.bookmarks.BookmarkChangesArg,
-  done: (errMsg: string, node?: BookmarkTreeNode) => void
+  done: (errMsg: string, node?: BrowserBookmark) => void
 ) {
   bookmarks.update(id, changes, (updatedNode) => {
     if (!checkAndHandleError(done)) {

@@ -1,26 +1,33 @@
 import { actionTypes } from "@/shared/constants";
+import {
+  ActionHandler,
+  AlertAction,
+  AlertState,
+} from "@/shared/types/store.types";
 
 import ActionHandlerFactory from "../helpers/actionHandlerFactory";
 import createReducer from "../helpers/createReducer";
 
-const initialState = {
+const initialState: AlertState = {
   type: null,
   message: null,
 };
 
-function handleSuccess(_, { message }) {
+type Handler = ActionHandler<AlertState, AlertAction>;
+
+const handleSuccess: Handler = (_, { message }) => {
   return { type: "success", message };
-}
+};
 
-function handleError(_, { message }) {
+const handleError: Handler = (_, { message }) => {
   return { type: "error", message };
-}
+};
 
-function handleClear() {
+const handleClear: Handler = () => {
   return {};
-}
+};
 
-const factory = new ActionHandlerFactory();
+const factory = new ActionHandlerFactory<AlertState, AlertAction>();
 factory.register(actionTypes.ALERT_SUCCESS, handleSuccess);
 factory.register(actionTypes.ALERT_ERROR, handleError);
 factory.register(actionTypes.ALERT_CLEAR, handleClear);

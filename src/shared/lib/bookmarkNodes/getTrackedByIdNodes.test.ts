@@ -1,7 +1,9 @@
+import { NormalizedDynamicBookmark } from "@/shared/types";
+
 import getTrackedByIdNodes from "./getTrackedByIdNodes";
 
 describe("getTrackedByIdNodes", () => {
-  const nodes = {
+  const nodes: Record<string, NormalizedDynamicBookmark> = {
     0: {
       id: "0",
       children: ["1", "2"],
