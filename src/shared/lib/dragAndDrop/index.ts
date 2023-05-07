@@ -1,7 +1,11 @@
+import { DragEvent } from "react";
 /**
  * Sets "text/plain" data on `event.dataTransfer` with passed `data` and empty ghost drag image
  */
-export function setDragTextData(event, data) {
+export function setDragTextData<T = Element>(
+  event: DragEvent<T>,
+  data: string
+) {
   const dragImg = new Image(0, 0);
   dragImg.src =
     "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -14,7 +18,10 @@ export function setDragTextData(event, data) {
  * Calls `event.preventDefault`, also sets `dropEffect` to passed value ("move" by default).
  * This function should be used in `onDragOver` event.
  */
-export function allowDrop(event, dropEffect = "move") {
+export function allowDrop<T = Element>(
+  event: DragEvent<T>,
+  dropEffect: DataTransfer["dropEffect"] = "move"
+) {
   event.preventDefault();
   event.dataTransfer.dropEffect = dropEffect;
 }

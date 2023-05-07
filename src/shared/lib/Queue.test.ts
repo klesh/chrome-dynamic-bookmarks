@@ -31,7 +31,7 @@ describe("Queue", () => {
     beforeEach(() => {
       queue = new Queue();
       queue.enqueue(item);
-      queue.dequeue(item);
+      queue.dequeue();
     });
     describe("dequeue", () => {
       it("returns undefined", () => {

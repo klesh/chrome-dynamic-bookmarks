@@ -1,9 +1,159 @@
 import { checkAndHandleError } from "@/shared/lib/browser/log";
+import { BookmarkTreeNode } from "@/shared/types/bookmark.types";
 
 import getCurrentBrowser from "../getCurrentBrowser";
 
 const browser = getCurrentBrowser();
 const bookmarks = browser.bookmarks;
+
+/**
+ * Creates a bookmark or folder under the specified parentId.
+ * If url is missing it will be a folder
+ */
+export function create(
+  {
+    title,
+    url,
+    parentId = undefined,
+    index = undefined,
+  }: chrome.bookmarks.BookmarkCreateArg,
+  done: (errMsg: string, newBookmark?: BookmarkTreeNode) => void
+) {
+  bookmarks.create({ title, url, parentId, index }, (newBookmark) => {
+    if (!checkAndHandleError(done)) {
+      done(null, newBookmark);
+    }
+  });
+}
+
+/**
+ * Creates a bookmark or folder under the specified parentId.
+ * If url is `NULL` or missing, it will be a folder
+ * @returns Promise object represents the newly created bookmark / folder
+ */
+export function createAsync(bookmarkNode: chrome.bookmarks.BookmarkCreateArg) {
+  return new Promise<BookmarkTreeNode>(function (resolve, reject) {
+    create(bookmarkNode, function (err, data) {
+      if (err) reject(err);
+      else resolve(data);
+    });
+  });
+}
+
+export function get(
+  id: string,
+  done: (errMsg: string, node?: BookmarkTreeNode) => void
+) {
+  bookmarks.get(id, (results) => {
+    if (!checkAndHandleError(done)) {
+      const node = results[0];
+      done(null, node);
+    }
+  });
+}
+
+/**
+ * Retrieves part of the Bookmarks hierarchy, starting at the specified node.
+ */
+export function getSubTree(
+  id: string,
+  done: (err: string, rootNode?: BookmarkTreeNode) => void
+) {
+  bookmarks.getSubTree(id, (results) => {
+    if (!checkAndHandleError(done)) {
+      const rootNode = results[0];
+      done(null, rootNode);
+    }
+  });
+}
+
+/**
+ * Retrives the root node of the bookmarks
+ */
+export function getTreeRoot(
+  done: (err: string, rootNode?: BookmarkTreeNode) => void
+) {
+  bookmarks.getTree((results) => {
+    if (!checkAndHandleError(done)) {
+      const rootNode = results[0];
+      done(null, rootNode);
+    }
+  });
+}
+
+/**
+ * Retrieves the children of the specified BookmarkTreeNode `id`.
+ */
+export function getChildren(
+  id: string,
+  done: (children?: BookmarkTreeNode[]) => void
+) {
+  bookmarks.getChildren(id, (results) => {
+    if (checkAndHandleError()) {
+      done([]);
+    } else {
+      done(results);
+    }
+  });
+}
+
+/**
+ * Searches for BookmarkTreeNodes matching the given query.
+ * @param query - string of words and quoted phrases that are matched against bookmark URLs and titles
+ * @param done - callback function called with `done([bookmarks])`
+ */
+export function search(
+  query: string | chrome.bookmarks.BookmarkSearchQuery,
+  done: (results?: BookmarkTreeNode[]) => void
+) {
+  bookmarks.search(query || ({} as unknown), (results) => {
+    if (checkAndHandleError()) {
+      done([]);
+    } else {
+      done(results);
+    }
+  });
+}
+
+export function move(
+  id: string,
+  { parentId, index }: chrome.bookmarks.BookmarkDestinationArg,
+  done: (errMsg: string, node?: BookmarkTreeNode) => void
+) {
+  bookmarks.move(id, { parentId, index }, (result) => {
+    if (!checkAndHandleError(done)) {
+      done(null, result);
+    }
+  });
+}
+
+export function update(
+  id: string,
+  changes: chrome.bookmarks.BookmarkChangesArg,
+  done: (errMsg: string, node?: BookmarkTreeNode) => void
+) {
+  bookmarks.update(id, changes, (updatedNode) => {
+    if (!checkAndHandleError(done)) {
+      done(null, updatedNode);
+    }
+  });
+}
+
+export function remove(id: string, done: (errMsg: string) => void) {
+  bookmarks.remove(id, () => {
+    if (!checkAndHandleError(done)) {
+      done(null);
+    }
+  });
+}
+
+export function removeTree(id: string, done: (errMsg: string) => void) {
+  bookmarks.removeTree(id, () => {
+    if (!checkAndHandleError(done)) {
+      done(null);
+    }
+  });
+}
 
 export default {
   create,
@@ -18,128 +168,3 @@ export default {
   remove,
   removeTree,
 };
-
-/**
- * Creates a bookmark or folder under the specified parentId.
- * If url is `NULL` or missing, it will be a folder
- * @param {object} bookmark - `{title:string, url:string, parentId:string?, index:integer?}`
- * @param {function} done - callback function called with `done(errMsg, newBookmark)`
- */
-export function create({ title, url, parentId = null, index = null }, done) {
-  bookmarks.create({ title, url, parentId, index }, (newBookmark) => {
-    if (!checkAndHandleError(done)) {
-      done(null, newBookmark);
-    }
-  });
-}
-
-/**
- * Creates a bookmark or folder under the specified parentId.
- * If url is `NULL` or missing, it will be a folder
- * @returns {Promise} Promise object represents the newly created bookmark / folder
- */
-export function createAsync(bookmarkNode) {
-  return new Promise(function (resolve, reject) {
-    create(bookmarkNode, function (err, data) {
-      if (err) reject(err);
-      else resolve(data);
-    });
-  });
-}
-
-export function get(id, done) {
-  bookmarks.get(id, (results) => {
-    if (!checkAndHandleError(done)) {
-      const node = results[0];
-      done(null, node);
-    }
-  });
-}
-
-/**
- * Retrieves part of the Bookmarks hierarchy, starting at the specified node.
- * @param {function} done - callback function called with `done(errMsg, subTreeRoot)`
- */
-export function getSubTree(id, done) {
-  bookmarks.getSubTree(id, (results) => {
-    if (!checkAndHandleError(done)) {
-      const rootNode = results[0];
-      done(null, rootNode);
-    }
-  });
-}
-
-/**
- * Retrives the root node of the bookmarks
- * @param {function} done - callback function called with `done(errMsg, treeRoot)`
- */
-export function getTreeRoot(done) {
-  bookmarks.getTree((results) => {
-    if (!checkAndHandleError(done)) {
-      const rootNode = results[0];
-      done(null, rootNode);
-    }
-  });
-}
-
-/**
- * Retrieves the children of the specified BookmarkTreeNode `id`.
- * @param {string} id
- * @param {function} done - callback called with `done([bookmarks])`
- */
-export function getChildren(id, done) {
-  bookmarks.getChildren(id, (results) => {
-    if (checkAndHandleError()) {
-      done([]);
-    } else {
-      done(results);
-    }
-  });
-}
-
-/**
- * Searches for BookmarkTreeNodes matching the given query.
- * @param {string} query - string of words and quoted phrases that are matched against bookmark URLs and titles
- * @param {callback} done - callback function called with `done([bookmarks])`
- */
-export function search(query, done) {
-  bookmarks.search(query || {}, (results) => {
-    if (checkAndHandleError()) {
-      done([]);
-    } else {
-      done(results);
-    }
-  });
-}
-
-export function move(id, { parentId, index }, done) {
-  bookmarks.move(id, { parentId, index }, (result) => {
-    if (!checkAndHandleError(done)) {
-      done(null, result);
-    }
-  });
-}
-
-export function update(id, { title, url }, done) {
-  bookmarks.update(id, { title, url }, (updatedNode) => {
-    if (!checkAndHandleError(done)) {
-      done(null, updatedNode);
-    }
-  });
-}
-
-export function remove(id, done) {
-  bookmarks.remove(id, () => {
-    if (!checkAndHandleError(done)) {
-      done(null);
-    }
-  });
-}
-
-export function removeTree(id, done) {
-  bookmarks.removeTree(id, () => {
-    if (!checkAndHandleError(done)) {
-      done(null);
-    }
-  });
-}

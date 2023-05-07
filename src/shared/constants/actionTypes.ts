@@ -32,4 +32,4 @@ export default {
   REMOVE_SELECTED,
   CLEAR_SELECTED,
   TOGGLE_SELECTED,
-};
+} as const;

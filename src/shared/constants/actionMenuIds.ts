@@ -8,4 +8,4 @@ export default {
   folderActionMenuId,
   addBookmarkNodeActionMenuId,
   selectedNodesActionMenuId,
-};
+} as const;

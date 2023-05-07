@@ -10,4 +10,4 @@ export default {
   EDIT_BM_NODE,
   MOVE_BM_NODE,
   REMOVE_BM_NODE,
-};
+} as const;

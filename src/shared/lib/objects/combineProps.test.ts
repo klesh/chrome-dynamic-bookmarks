@@ -1,4 +1,3 @@
-/// <reference types="jest" /
 import combineProps from "./combineProps";
 
 describe("combineProps", () => {

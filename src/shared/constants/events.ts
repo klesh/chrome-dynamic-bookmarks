@@ -8,4 +8,4 @@ export default {
   BM_NODE_CREATED,
   BM_NODE_MOVED,
   BM_NODE_REMOVED,
-};
+} as const;
