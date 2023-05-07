@@ -1,2 +1,2 @@
-export { default as indexOfOrDefault } from "./indexOfOrDefault.js";
-export { default as sliceRange } from "./sliceRange.js";
+export { default as indexOfOrDefault } from "./indexOfOrDefault";
+export { default as sliceRange } from "./sliceRange";
