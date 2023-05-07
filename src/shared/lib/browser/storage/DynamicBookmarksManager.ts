@@ -3,7 +3,7 @@ import {
   logError,
   logInfo,
 } from "@/shared/lib/browser/log";
-import { DynamicBookmark } from "@/shared/types/bookmark.types";
+import { DynamicBookmarkStorageItem } from "@/shared/types/bookmark.types";
 
 import getCurrentBrowser from "../getCurrentBrowser";
 
@@ -25,7 +25,10 @@ export class DynamicBookmarksManager {
    * @param {function} done - callback function called with `done(error, dynBook)`
    */
   findAll = (
-    done: (error: string | null, item?: Record<string, DynamicBookmark>) => void
+    done: (
+      error: string | null,
+      item?: Record<string, DynamicBookmarkStorageItem>
+    ) => void
   ) => {
     this._getAllIds((errMsg, ids = []) => {
       if (errMsg) return done(errMsg);
@@ -44,7 +47,7 @@ export class DynamicBookmarksManager {
    */
   findById = (
     id: string,
-    done: (error: string | null, item?: DynamicBookmark) => void
+    done: (error: string | null, item?: DynamicBookmarkStorageItem) => void
   ) => {
     const key = _convertToDbmId(id);
     this.storage.get([key], (result) => {
@@ -72,10 +75,10 @@ export class DynamicBookmarksManager {
    */
   findByIdAndUpdate = (
     id: string,
-    { regExp, history }: DynamicBookmark,
+    { regExp, history }: DynamicBookmarkStorageItem,
     done: (
       error: string | null,
-      updatedItem?: { id: string } & DynamicBookmark
+      updatedItem?: { id: string } & DynamicBookmarkStorageItem
     ) => void
   ) => {
     const key = _convertToDbmId(id);
@@ -97,7 +100,10 @@ export class DynamicBookmarksManager {
    */
   create(
     { id = "", regExp = "", history = [] },
-    done: (error: string | null, createdItem?: DynamicBookmark) => void
+    done: (
+      error: string | null,
+      createdItem?: DynamicBookmarkStorageItem
+    ) => void
   ) {
     const key = _convertToDbmId(id);
     this._setItem(key, { regExp, history }, (errMsg, createdItem) => {
@@ -112,7 +118,7 @@ export class DynamicBookmarksManager {
    * `Warning`: This function is **DANGEROUS**! Potential data loss!
    */
   overwrite(
-    newDynBookmarks: Record<string, DynamicBookmark> = {},
+    newDynBookmarks: Record<string, DynamicBookmarkStorageItem> = {},
     done: typeof logError
   ) {
     const newDynBookMapped = _cloneWithMappedKeys(newDynBookmarks);
@@ -138,7 +144,7 @@ export class DynamicBookmarksManager {
   }
   private _getIdsToRemove(
     dbmIds: string[] = [],
-    newDynBookMapped: Record<string, DynamicBookmark> = {}
+    newDynBookMapped: Record<string, DynamicBookmarkStorageItem> = {}
   ) {
     const idsToRemove = dbmIds.filter((key) => !(key in newDynBookMapped));
     return idsToRemove;
@@ -151,7 +157,7 @@ export class DynamicBookmarksManager {
     }
   }
   private _updateStorageItems(
-    newDynBookMapped: Record<string, DynamicBookmark>,
+    newDynBookMapped: Record<string, DynamicBookmarkStorageItem>,
     done: typeof logError
   ) {
     logInfo("Updating storage items to ", newDynBookMapped);

@@ -1,9 +1,9 @@
-import { applyMiddleware,createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import thunkMiddleware from "redux-thunk";
 
 import rootReducer from "@/shared/store/reducers/rootReducer";
 
-export default function getStore() {
+const getStore = () => {
   let middleware = [thunkMiddleware];
 
   if (process.env.NODE_ENV !== "production") {
@@ -12,4 +12,6 @@ export default function getStore() {
   }
 
   return createStore(rootReducer, applyMiddleware(...middleware));
-}
+};
+
+export default getStore;

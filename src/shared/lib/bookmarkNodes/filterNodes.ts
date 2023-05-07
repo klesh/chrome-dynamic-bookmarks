@@ -1,19 +1,24 @@
+import { FilterState, NormalizedDynamicBookmark } from "@/shared/types";
+
 import { isRoot } from "./comparisons";
 
-const defaultFilter = {
+const defaultFilter: FilterState = {
   parentId: null,
   searchText: "",
 };
 
 export default function filterNodes(
-  bookmarkNodes = {},
+  bookmarkNodes: Record<string, NormalizedDynamicBookmark> = {},
   filter = defaultFilter
 ) {
-  let nodes = _filterByParentId(bookmarkNodes, filter.parentId);
+  const nodes = _filterByParentId(bookmarkNodes, filter.parentId);
   return _filterBySearchText(nodes, filter.searchText);
 }
 
-function _filterByParentId(bookmarkNodes = {}, parentId = null) {
+function _filterByParentId(
+  bookmarkNodes: Record<string, NormalizedDynamicBookmark> = {},
+  parentId = null
+) {
   if (!parentId) {
     return Object.keys(bookmarkNodes)
       .map((key) => bookmarkNodes[key])
@@ -23,7 +28,10 @@ function _filterByParentId(bookmarkNodes = {}, parentId = null) {
   return parent.children.map((childId) => bookmarkNodes[childId]);
 }
 
-function _filterBySearchText(nodes = [], searchText = "") {
+function _filterBySearchText(
+  nodes: NormalizedDynamicBookmark[] = [],
+  searchText = ""
+) {
   if (!searchText) {
     return nodes;
   }

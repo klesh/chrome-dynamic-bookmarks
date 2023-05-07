@@ -1,3 +1,5 @@
+export type OmitStrict<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Omits the key from a type if it exists in this type, otherwise it just returns back the type.
@@ -22,3 +24,11 @@ export type RecursivePartial<T> = {
 
 export type GenericFunction = (...args: any[]) => any | undefined;
 export type GenericObject = Record<string, any>;
+
+export type RecordKey = string | number | symbol;
+
+export type MakeOptional<TItem, TKey extends keyof TItem> = OptionalOmit<
+  TItem,
+  TKey
+> &
+  Partial<Pick<TItem, TKey>>;

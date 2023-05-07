@@ -1,3 +1,5 @@
+import { NormalizedDynamicBookmark } from "@/shared/types";
+
 import { isFile, isOnlyOneFile } from "./comparisons";
 
 function _safeToLowerCase(value = "", defaultValue = "") {
@@ -8,8 +10,10 @@ function _safeToLowerCase(value = "", defaultValue = "") {
   }
 }
 
-export default function getSortedNodes(nodes = []) {
-  let sorted = [...nodes];
+export default function getSortedNodes(
+  nodes: NormalizedDynamicBookmark[] = []
+): NormalizedDynamicBookmark[] {
+  const sorted = [...nodes];
   sorted.sort((lhs, rhs) => {
     if (isOnlyOneFile(lhs, rhs)) {
       return isFile(lhs) ? 1 : -1;

@@ -1,7 +1,13 @@
+import {
+  BookmarkNodesAction,
+  BookmarkNodesState,
+  MakeOptional,
+} from "@/shared/types";
+
 import { onNodeChanged } from "./onNodeChanged";
 
 describe("onNodeChanged", () => {
-  let initialState = {};
+  let initialState: BookmarkNodesState = { data: {} };
 
   beforeEach(() => {
     initialState = {
@@ -26,7 +32,7 @@ describe("onNodeChanged", () => {
     const newRegExp = "BM_REGEXP_NEW";
     const newUrl = "BM_URL_NEW";
 
-    const action = {
+    const action: MakeOptional<BookmarkNodesAction, "type"> = {
       data: {
         id: "21",
         title: newTitle,
@@ -58,10 +64,11 @@ describe("onNodeChanged", () => {
   it("can update regexp to null", () => {
     const newRegExp = null;
 
-    const action = {
+    const action: MakeOptional<BookmarkNodesAction, "type"> = {
       data: {
         id: "21",
         regExp: newRegExp,
+        title: "BM_TEST",
       },
     };
 

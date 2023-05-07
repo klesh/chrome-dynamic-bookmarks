@@ -1,25 +1,32 @@
 import { actionTypes, clipboardTypes } from "@/shared/constants";
+import {
+  ActionHandler,
+  ClipboardAction,
+  ClipboardState,
+} from "@/shared/types/store.types";
 
 import ActionHandlerFactory from "../helpers/actionHandlerFactory";
 import createReducer from "../helpers/createReducer";
 
-const initialState = {};
+const initialState: ClipboardState = {};
 
-function handleCopy(_, { data }) {
+type Handler = ActionHandler<ClipboardState, ClipboardAction>;
+
+const handleCopy: Handler = (_, { data }) => {
   return {
     type: clipboardTypes.COPIED,
     data,
   };
-}
+};
 
-function handleCut(_, { data }) {
+const handleCut: Handler = (_, { data }) => {
   return {
     type: clipboardTypes.CUT,
     data,
   };
-}
+};
 
-const factory = new ActionHandlerFactory();
+const factory = new ActionHandlerFactory<ClipboardState, ClipboardAction>();
 factory.register(actionTypes.COPY_TO_CLIPBOARD, handleCopy);
 factory.register(actionTypes.CUT_TO_CLIPBOARD, handleCut);
 

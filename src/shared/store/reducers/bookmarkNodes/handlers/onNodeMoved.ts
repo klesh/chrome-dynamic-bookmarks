@@ -1,9 +1,21 @@
+import {
+  ActionHandler,
+  BookmarkNodesAction,
+  BookmarkNodesState,
+} from "@/shared/types";
+
 import { getNode } from "./getNode";
 
-export function onNodeMoved(state, { data = {} }) {
+export const onNodeMoved: ActionHandler<
+  BookmarkNodesState,
+  BookmarkNodesAction
+> = (state, { data }) => {
+  if (!data) return state;
+
   const nodeId = data.id;
   const node = getNode(state, nodeId);
   let parents = {};
+
   if (node.parentId !== data.parentId) {
     const oldParent = getNode(state, node.parentId);
     const newParent = getNode(state, data.parentId);
@@ -18,6 +30,7 @@ export function onNodeMoved(state, { data = {} }) {
       },
     };
   }
+
   return {
     ...state,
     data: {
@@ -26,4 +39,4 @@ export function onNodeMoved(state, { data = {} }) {
       [nodeId]: { ...node, parentId: data.parentId },
     },
   };
-}
+};

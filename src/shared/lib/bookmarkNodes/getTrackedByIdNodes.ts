@@ -1,7 +1,12 @@
-import { isFolder,isTracked } from "./comparisons";
+import { NormalizedDynamicBookmark } from "@/shared/types";
 
-export default function getTrackedByIdNodes(nodes = {}, rootId = "0") {
-  const trackedByNodeId = {};
+import { isFolder, isTracked } from "./comparisons";
+
+export default function getTrackedByIdNodes(
+  nodes: Record<string, NormalizedDynamicBookmark> = {},
+  rootId = "0"
+) {
+  const trackedByNodeId: Record<string, boolean> = {};
   if (!(rootId in nodes)) {
     return trackedByNodeId;
   }
@@ -16,7 +21,7 @@ export default function getTrackedByIdNodes(nodes = {}, rootId = "0") {
     let tracked = isTracked(node);
     if (isFolder(node)) {
       const children = _mapIdsToNodes(node.children);
-      for (let child of children) {
+      for (const child of children) {
         if (traverseTree(child)) {
           tracked = true;
         }

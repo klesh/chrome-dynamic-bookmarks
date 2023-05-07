@@ -1,8 +1,10 @@
+import { BrowserBookmark, NormalizedBrowserBookmark } from "@/shared/types";
+
 import normalizeBookmarkTree from "./normalizeBookmarkTree";
 
 describe("normalizeBookmarkTree", () => {
   it("normalizes bookmark tree", () => {
-    const treeRoot = {
+    const treeRoot: BrowserBookmark = {
       id: "0",
       title: "",
       children: [
@@ -21,7 +23,7 @@ describe("normalizeBookmarkTree", () => {
       ],
     };
 
-    const expected = {
+    const expected: Record<string, NormalizedBrowserBookmark> = {
       0: {
         id: "0",
         title: "",
