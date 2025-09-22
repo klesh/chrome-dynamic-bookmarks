@@ -39,29 +39,37 @@ export function copyBookmarkNode(id, { parentId, index }, done) {
 }
 
 export function editBookmarkNode(node, done) {
-  bookmarks.update(node.id, node, (errMsg, updatedNode) => {
-    if (errMsg) {
-      return done(errMsg);
+  bookmarks.update(
+    node.id,
+    { title: node.itle, url: node.url },
+    (errMsg, updatedNode) => {
+      if (errMsg) {
+        return done(errMsg);
+      }
+      if (!updatedNode.url) {
+        return done(null, updatedNode);
+      }
+      if (node.regExp) {
+        storage.findByIdAndUpdate(
+          node.id,
+          node,
+          (errMsg, updatedDynBookItem) => {
+            if (errMsg) {
+              return done(errMsg);
+            }
+            done(null, { ...updatedNode, ...updatedDynBookItem });
+          }
+        );
+      } else {
+        storage.findByIdAndRemove(node.id, (errMsg) => {
+          if (errMsg) {
+            return done(errMsg);
+          }
+          done(null, { ...updatedNode, regExp: "" });
+        });
+      }
     }
-    if (!updatedNode.url) {
-      return done(null, updatedNode);
-    }
-    if (node.regExp) {
-      storage.findByIdAndUpdate(node.id, node, (errMsg, updatedDynBookItem) => {
-        if (errMsg) {
-          return done(errMsg);
-        }
-        done(null, { ...updatedNode, ...updatedDynBookItem });
-      });
-    } else {
-      storage.findByIdAndRemove(node.id, (errMsg) => {
-        if (errMsg) {
-          return done(errMsg);
-        }
-        done(null, { ...updatedNode, regExp: "" });
-      });
-    }
-  });
+  );
 }
 
 export function createBookmarkNode(node, done) {
