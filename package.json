@@ -126,5 +126,9 @@
   "bugs": {
     "url": "https://github.com/DaniloNovakovic/chrome-dynamic-bookmarks/issues"
   },
-  "homepage": "https://github.com/DaniloNovakovic/chrome-dynamic-bookmarks#readme"
+  "homepage": "https://github.com/DaniloNovakovic/chrome-dynamic-bookmarks#readme",
+  "volta": {
+    "node": "16.20.2",
+    "yarn": "3.4.1"
+  }
 }
